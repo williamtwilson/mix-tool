@@ -1,14 +1,14 @@
-#include "EnterA.hpp"
+#include "EnterX.hpp"
 
-EnterA::EnterA(): Command("ENTA", 48) {}
+EnterX::EnterX(): Command("ENTX", 55) {}
 
-void EnterA::execute(Machine *machine, unsigned long address, unsigned short index, unsigned short field) {
+void EnterX::execute(Machine *machine, unsigned long address, unsigned short index, unsigned short field) {
     if (index > 0 && index < 7) {
         std::shared_ptr<Register> rI(machine->lookupRegister(index));
         address += rI->contentsToLong();
     }
 
     std::shared_ptr<Word> w(new Word(address));
-    machine->rA->load(w.get());
+    machine->rX->load(w.get());
 }
 

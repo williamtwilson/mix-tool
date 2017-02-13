@@ -38,3 +38,7 @@ std::shared_ptr<Register> Machine::lookupRegister(unsigned short index) {
     return std::shared_ptr<Register>(new Register());
 }
 
+std::shared_ptr<Word> Machine::lookupMemoryCell(unsigned long index) {
+    return memory->at(index);
+}
+

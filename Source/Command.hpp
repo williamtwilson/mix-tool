@@ -13,6 +13,8 @@ class Command {
         Command(std::string, unsigned short);
 
         virtual void execute(Machine *machine, unsigned long address, unsigned short index, unsigned short field);
+        unsigned short firstFieldIndex(unsigned short field);
+        unsigned short secondFieldIndex(unsigned short field);
 };
 
 #endif

@@ -27,6 +27,8 @@ class Machine {
         Machine();
 
         std::shared_ptr<Register> lookupRegister(unsigned short);
+
+        std::shared_ptr<Word> lookupMemoryCell(unsigned long);
 };
 
 #endif
