@@ -1,2 +1,4 @@
 # Binary
 mix
+mix_debug
+*.dSYM/

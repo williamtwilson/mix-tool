@@ -48,20 +48,20 @@ void Word::setSign(Sign sign) {
 }
 
 Byte Word::at(int index) {
-    return fields->at(index);
+    return fields->at(index - 1);
 }
 
 void Word::setAt(int index, Byte value) {
-    fields->at(index) = value;
+    fields->at(index - 1) = value;
 }
 
 long Word::toLong() {
     long start = 0;
-    start += at(4);
-    start += at(3) * 64;
-    start += at(2) * 64 * 64;
-    start += at(1) * 64 * 64 * 64;
-    start += at(0) * 64 * 64 * 64 * 64;
+    start += at(5);
+    start += at(4) * 64;
+    start += at(3) * 64 * 64;
+    start += at(2) * 64 * 64 * 64;
+    start += at(1) * 64 * 64 * 64 * 64;
 
     Sign s = sign();
     if (s == Sign::negative) {

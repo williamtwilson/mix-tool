@@ -11,7 +11,8 @@ Machine::Machine():
     rI4(new Register()),
     rI5(new Register()),
     rI6(new Register()),
-    rJ(new Register()) {}
+    rJ(new Register()),
+    memory(new Memory()){}
 
 std::shared_ptr<Register> Machine::lookupRegister(unsigned short index) {
     switch (index) {
