@@ -2,6 +2,7 @@
 #include "Source/Comparison.hpp"
 #include "Source/EnterA.hpp"
 #include "Source/EnterX.hpp"
+#include "Source/Enter1.hpp"
 #include <iostream>
 #include "Source/Machine.hpp"
 #include "Source/Memory.hpp"

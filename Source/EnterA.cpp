@@ -3,12 +3,9 @@
 EnterA::EnterA(): Command("ENTA", 48) {}
 
 void EnterA::execute(Machine *machine, unsigned long address, unsigned short index, unsigned short field) {
-    if (index > 0 && index < 7) {
-        std::shared_ptr<Register> rI(machine->lookupRegister(index));
-        address += rI->contentsToLong();
-    }
+    unsigned long aAddress = adjustedAddress(machine, address, index);
 
-    std::shared_ptr<Word> w(new Word(address));
+    std::shared_ptr<Word> w(new Word(aAddress));
     machine->rA->load(w.get());
 }
 

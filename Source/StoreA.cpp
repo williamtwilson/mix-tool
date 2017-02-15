@@ -3,16 +3,13 @@
 StoreA::StoreA(): Command("STA", 32) {}
 
 void StoreA::execute(Machine *machine, unsigned long address, unsigned short index, unsigned short field) {
-    if (index > 0 && index < 7) {
-        std::shared_ptr<Register> rI(machine->lookupRegister(index));
-        address += rI->contentsToLong();
-    }
+    unsigned long aAddress = adjustedAddress(machine, address, index);
 
     unsigned short f = firstFieldIndex(field);
     unsigned short l = secondFieldIndex(field);
 
     if (address <= 4000) {
-        std::shared_ptr<Word> m = machine->lookupMemoryCell(address);
+        std::shared_ptr<Word> m = machine->lookupMemoryCell(aAddress);
         std::shared_ptr<Word> rAWord = machine->rA->read();
 
         if (f == 0) {
