@@ -20,6 +20,15 @@ int main() {
     std::shared_ptr<StoreA> storeA(std::make_shared<StoreA>());
     storeA->execute(machine, 0000, 0, Command::fieldForIndexes(2, 4));
 
+    enterA->execute(machine, something, 0, 2);
+    storeA->execute(machine, 0001, 0, Command::fieldForIndexes(0, 5));
+
+    std::unique_ptr<LoadA> loadA(std::make_unique<LoadA>());
+    loadA->execute(machine, 0001, 0, Command::fieldForIndexes(0, 3));
+
+    std::unique_ptr<LoadX> loadX(std::make_unique<LoadX>());
+    loadX->execute(machine, 0001, 0, Command::fieldForIndexes(0, 1));
+
     machine->showRegisters();
     machine->showCells(0, 20);
 }
