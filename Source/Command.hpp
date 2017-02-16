@@ -12,9 +12,9 @@ class Command {
 
         Command(std::string, unsigned short);
 
-        static unsigned long adjustedAddress(Machine *machine, unsigned long address, unsigned short index);
+        static unsigned long adjustedAddress(std::shared_ptr<Machine> machine, unsigned long address, unsigned short index);
 
-        virtual void execute(Machine *machine, unsigned long address, unsigned short index, unsigned short field);
+        virtual void execute(std::shared_ptr<Machine> machine, unsigned long address, unsigned short index, unsigned short field);
         static unsigned short fieldForIndexes(unsigned short first, unsigned short last);
         static unsigned short firstFieldIndex(unsigned short field);
         static unsigned short secondFieldIndex(unsigned short field);

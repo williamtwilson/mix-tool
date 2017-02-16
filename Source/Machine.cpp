@@ -3,16 +3,16 @@
 Machine::Machine(): 
     overflowToggle(Overflow::off),
     comparisonIndicator(Comparison::less),
-    rA(new Register()),
-    rX(new Register()),
-    rI1(new Register()),
-    rI2(new Register()),
-    rI3(new Register()),
-    rI4(new Register()),
-    rI5(new Register()),
-    rI6(new Register()),
-    rJ(new Register()),
-    memory(new Memory()){}
+    rA(std::make_shared<Register>()),
+    rX(std::make_shared<Register>()),
+    rI1(std::make_shared<Register>()),
+    rI2(std::make_shared<Register>()),
+    rI3(std::make_shared<Register>()),
+    rI4(std::make_shared<Register>()),
+    rI5(std::make_shared<Register>()),
+    rI6(std::make_shared<Register>()),
+    rJ(std::make_shared<Register>()),
+    memory(std::make_shared<Memory>()){}
 
 std::shared_ptr<Register> Machine::lookupRegister(unsigned short index) {
     switch (index) {
@@ -36,7 +36,7 @@ std::shared_ptr<Register> Machine::lookupRegister(unsigned short index) {
             break;
     }
 
-    return std::shared_ptr<Register>(new Register());
+    return std::shared_ptr<Register>(std::make_shared<Register>());
 }
 
 std::shared_ptr<Word> Machine::lookupMemoryCell(unsigned long index) {

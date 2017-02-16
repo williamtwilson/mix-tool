@@ -1,9 +1,9 @@
 #include "Memory.hpp"
 #include <iostream>
 
-Memory::Memory(): cells(new std::array<std::shared_ptr<Word>, 4000>) {
+Memory::Memory(): cells(std::make_shared<std::array<std::shared_ptr<Word>, 4000>>()) {
     for (int i = 0; i < 4000; i++) {
-        std::shared_ptr<Word> word(new Word(0));
+        std::shared_ptr<Word> word(std::make_shared<Word>(0));
         cells->at(i) = word;
     }
 };

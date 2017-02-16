@@ -12,7 +12,7 @@ class Register {
         long contentsToLong();
 
         std::string description();
-        void load(Word *w);
+        void load(std::shared_ptr<Word> w);
         std::shared_ptr<Word> read();
     private:
         std::shared_ptr<Word> word;

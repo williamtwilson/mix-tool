@@ -2,7 +2,7 @@
 
 StoreA::StoreA(): Command("STA", 32) {}
 
-void StoreA::execute(Machine *machine, unsigned long address, unsigned short index, unsigned short field) {
+void StoreA::execute(std::shared_ptr<Machine> machine, unsigned long address, unsigned short index, unsigned short field) {
     unsigned long aAddress = adjustedAddress(machine, address, index);
 
     unsigned short f = firstFieldIndex(field);

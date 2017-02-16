@@ -6,7 +6,7 @@
 class EnterA: public Command {
     public:
         EnterA();
-        void execute(Machine *machine, unsigned long address, unsigned short index, unsigned short field) override;
+        void execute(std::shared_ptr<Machine> machine, unsigned long address, unsigned short index, unsigned short field) override;
 };
 
 #endif

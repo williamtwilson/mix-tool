@@ -2,9 +2,9 @@
 #include <sstream>
 #include "Word.hpp"
 
-Word::Word(): s(Sign::positive), fields(new std::array<Byte, 5>()) {}
+Word::Word(): s(Sign::positive), fields(std::make_shared<std::array<Byte, 5>>()) {}
 
-Word::Word(Sign sign, Byte a, Byte b, Byte c, Byte d, Byte e): s(sign), fields(new std::array<Byte, 5>) {
+Word::Word(Sign sign, Byte a, Byte b, Byte c, Byte d, Byte e): s(sign), fields(std::make_shared<std::array<Byte, 5>>()) {
     s = sign;
 
     fields->at(0) = a;
@@ -14,7 +14,7 @@ Word::Word(Sign sign, Byte a, Byte b, Byte c, Byte d, Byte e): s(sign), fields(n
     fields->at(4) = e;
 }
 
-Word::Word(long num): s(Sign::positive), fields(new std::array<Byte, 5>) {
+Word::Word(long num): s(Sign::positive), fields(std::make_shared<std::array<Byte, 5>>()) {
     if (num < 0) {
         s = Sign::negative;
         num = 0 - num;
