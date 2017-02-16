@@ -1,7 +1,7 @@
-#include "Command.hpp"
-
 #ifndef STOREA_H
 #define STOREA_H
+
+#include "Command.hpp"
 
 class StoreA: public Command {
     public:

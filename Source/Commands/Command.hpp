@@ -1,9 +1,9 @@
+#ifndef COMMAND_H
+#define COMMAND_H
+
 #include "../Machine.hpp"
 #include <string>
 #include <memory>
-
-#ifndef COMMAND_H
-#define COMMAND_H
 
 class Command {
     public:

@@ -1,11 +1,11 @@
+#ifndef MACHINE_H
+#define MACHINE_H
+
 #include <memory>
 #include "Comparison.hpp"
 #include "Memory.hpp"
 #include "Overflow.hpp"
 #include "Register.hpp"
-
-#ifndef MACHINE_H
-#define MACHINE_H
 
 class Machine {
     public:

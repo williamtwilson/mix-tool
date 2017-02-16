@@ -1,7 +1,7 @@
-#include "Command.hpp"
-
 #ifndef ENTERX_H
 #define ENTERX_H
+
+#include "Command.hpp"
 
 class EnterX: public Command {
     public:

@@ -1,6 +1,7 @@
-#include <string>
 #ifndef SIGN_H
 #define SIGN_H
+
+#include <string>
 
 enum class Sign {
     positive,

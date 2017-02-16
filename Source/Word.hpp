@@ -1,11 +1,11 @@
+#ifndef WORD_H
+#define WORD_H
+
 #include <array>
 #include <string>
 #include <memory>
 #include "Byte.hpp"
 #include "Sign.hpp"
-
-#ifndef WORD_H
-#define WORD_H
 
 class Word {
     public:

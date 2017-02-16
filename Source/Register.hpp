@@ -1,9 +1,9 @@
+#ifndef REGISTER_H
+#define REGISTER_H
+
 #include <memory>
 #include <string>
 #include "Word.hpp"
-
-#ifndef REGISTER_H
-#define REGISTER_H
 
 class Register {
     public:

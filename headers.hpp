@@ -1,3 +1,6 @@
+#ifndef HEADERS_h
+#define HEADERS_h
+
 #include "Source/Byte.hpp"
 #include "Source/Comparison.hpp"
 #include "Source/Commands/EnterA.hpp"
@@ -12,4 +15,6 @@
 #include "Source/Sign.hpp"
 #include "Source/Commands/StoreA.hpp"
 #include "Source/Word.hpp"
+
+#endif
 
