@@ -11,7 +11,13 @@ unsigned long Command::adjustedAddress(std::shared_ptr<Machine> machine, unsigne
     return address;
 }
 
-void Command::execute(std::shared_ptr<Machine> machine, unsigned long address, unsigned short index, unsigned short field) {}
+void Command::executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field) {}
+
+void Command::execute(std::shared_ptr<Machine> machine, unsigned long address, unsigned short index, unsigned short field) {
+    unsigned long adjustedIndex = adjustedAddress(machine, address, index);
+
+    executeAdjusted(machine, adjustedIndex, field);
+}
 
 unsigned short Command::fieldForIndexes(unsigned short first, unsigned short last) {
     return first * 8 + last;

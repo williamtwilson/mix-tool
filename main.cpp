@@ -9,10 +9,13 @@ int main() {
     unsigned long something = 0 - (60 + (30 * 64) + (2 * 64 * 64) + (3 * 64 * 64 * 64) + (4 * 64 * 64 * 64 * 64));
     enterA->execute(machine, something, 1, 2);
 
-    std::unique_ptr<Enter1> enter1(new Enter1());
+    std::unique_ptr<Enter1> enter1(std::make_unique<Enter1>());
     enter1->execute(machine, something, 0, 2);
 
     std::cout << machine->rI1->description() << "\n";
+
+    std::unique_ptr<Enter2> enter2(std::make_unique<Enter2>());
+    enter2->execute(machine, something - 1, 0, 2);
 
     std::shared_ptr<StoreA> storeA(std::make_shared<StoreA>());
     storeA->execute(machine, 0000, 0, Command::fieldForIndexes(2, 4));

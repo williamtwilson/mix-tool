@@ -1,11 +1,11 @@
 #include "Command.hpp"
 
-#ifndef ENTERX_H
-#define ENTERX_H
+#ifndef ENTER2_H
+#define ENTER2_H
 
-class EnterX: public Command {
+class Enter2: public Command {
     public:
-        EnterX();
+        Enter2();
 
     protected:
         void executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field) override;

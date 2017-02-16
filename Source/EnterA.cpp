@@ -2,10 +2,8 @@
 
 EnterA::EnterA(): Command("ENTA", 48) {}
 
-void EnterA::execute(std::shared_ptr<Machine> machine, unsigned long address, unsigned short index, unsigned short field) {
-    unsigned long aAddress = adjustedAddress(machine, address, index);
-
-    std::shared_ptr<Word> w(std::make_shared<Word>(aAddress));
+void EnterA::executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field) {
+    std::shared_ptr<Word> w(std::make_shared<Word>(address));
     machine->rA->load(w);
 }
 

@@ -2,10 +2,8 @@
 
 EnterX::EnterX(): Command("ENTX", 55) {}
 
-void EnterX::execute(std::shared_ptr<Machine> machine, unsigned long address, unsigned short index, unsigned short field) {
-    unsigned long aAddress = adjustedAddress(machine, address, index);
-
-    std::shared_ptr<Word> w(std::make_shared<Word>(aAddress));
+void EnterX::executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field) {
+    std::shared_ptr<Word> w(std::make_shared<Word>(address));
     machine->rX->load(w);
 }
 
