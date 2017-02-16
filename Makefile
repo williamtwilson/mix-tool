@@ -1,7 +1,7 @@
 CC=clang++
 CFLAGS=-std="c++14"
 DFLAGS=-Wall -g
-SOURCES=Source/*.cpp main.cpp
+SOURCES=Source/*.cpp Source/Commands/*.cpp main.cpp
 
 all:
 	$(CC) $(SOURCES) $(CFLAGS) -o mix
