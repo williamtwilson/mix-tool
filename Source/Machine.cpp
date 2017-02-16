@@ -43,3 +43,42 @@ std::shared_ptr<Word> Machine::lookupMemoryCell(unsigned long index) {
     return memory->at(index);
 }
 
+void Machine::showCell(unsigned long index) {
+    if (index >= 4000) {
+        return;
+    }
+
+    if (index < 10) {
+        std::cout << "000";
+    } else if (index < 100) {
+        std::cout << "00";
+    } else if (index < 1000) {
+        std::cout << "0";
+    }
+
+    std::cout << std::to_string(index) << " : ";
+
+    std::shared_ptr<Word> w = lookupMemoryCell(index);
+
+    std::cout << w->description() << "\n";
+}
+
+void Machine::showCells(unsigned long start, unsigned long end) {
+    for (int i = start; i < end; i++) {
+        showCell(i);
+    }
+}
+
+void Machine::showRegisters() {
+    std::cout
+        << "RA  : " << rA->description() << "\n"
+        << "RX  : " << rX->description() << "\n"
+        << "RI1 : " << rI1->description() << "\n"
+        << "RI2 : " << rI2->description() << "\n"
+        << "RI3 : " << rI3->description() << "\n"
+        << "RI4 : " << rI4->description() << "\n"
+        << "RI5 : " << rI5->description() << "\n"
+        << "RI6 : " << rI6->description() << "\n"
+        << "RJ  : " << rJ->description() << "\n";
+}
+

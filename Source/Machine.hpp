@@ -1,8 +1,9 @@
 #ifndef MACHINE_H
 #define MACHINE_H
 
-#include <memory>
 #include "Comparison.hpp"
+#include <iostream>
+#include <memory>
 #include "Memory.hpp"
 #include "Overflow.hpp"
 #include "Register.hpp"
@@ -29,6 +30,11 @@ class Machine {
         std::shared_ptr<Register> lookupRegister(unsigned short);
 
         std::shared_ptr<Word> lookupMemoryCell(unsigned long);
+
+        void showCell(unsigned long index);
+        void showCells(unsigned long start, unsigned long end);
+
+        void showRegisters();
 };
 
 #endif

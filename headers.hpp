@@ -7,6 +7,7 @@
 #include "Source/Commands/EnterX.hpp"
 #include "Source/Commands/Enter1.hpp"
 #include "Source/Commands/Enter2.hpp"
+#include "Source/Commands/Enter3.hpp"
 #include <iostream>
 #include "Source/Machine.hpp"
 #include "Source/Memory.hpp"
