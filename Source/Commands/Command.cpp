@@ -1,6 +1,6 @@
 #include "Command.hpp"
 
-Command::Command(std::string n, unsigned short c): name(std::make_shared<std::string>(n)), code(c) {}
+Command::Command(std::string n, unsigned short c): code(c), name(std::make_shared<std::string>(n)) {}
 
 unsigned long Command::adjustedAddress(std::shared_ptr<Machine> machine, unsigned long address, unsigned short index) {
     if (index > 0 && index < 7) {
