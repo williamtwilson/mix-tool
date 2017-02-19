@@ -11,6 +11,11 @@ unsigned long Command::adjustedAddress(std::shared_ptr<Machine> machine, unsigne
     return address;
 }
 
+void Command::enter(std::shared_ptr<Register> r, unsigned long address) {
+    std::shared_ptr<Word> w(std::make_shared<Word>(address));
+    r->load(w);
+}
+
 void Command::executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field) {}
 
 void Command::execute(std::shared_ptr<Machine> machine, unsigned long address, unsigned short index, unsigned short field) {
@@ -25,6 +30,28 @@ unsigned short Command::fieldForIndexes(unsigned short first, unsigned short las
 
 unsigned short Command::firstFieldIndex(unsigned short field) {
     return field / 8;
+}
+
+void Command::load(std::shared_ptr<Machine> machine, std::shared_ptr<Register> r, unsigned long address, unsigned short field) {
+    unsigned short f = firstFieldIndex(field);
+    unsigned short l = secondFieldIndex(field);
+
+    if (address <= 4000) {
+        std::shared_ptr<Word> m = machine->lookupMemoryCell(address);
+
+        std::shared_ptr<Word> tmp(std::make_shared<Word>());
+
+        if (f == 0) {
+            tmp->setSign(m->sign());
+            f = 1;
+        }
+
+        for (int i = 5; l >= f; i--, l--) {
+            tmp->setAt(i, m->at(l));
+        }
+
+        r->load(tmp);
+    }
 }
 
 unsigned short Command::secondFieldIndex(unsigned short field) {

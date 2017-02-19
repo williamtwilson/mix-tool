@@ -17,6 +17,18 @@ int main() {
 
     CommandStore::loadX->execute(machine, 0001, 0, Command::fieldForIndexes(0, 1));
 
+    CommandStore::load1->execute(machine, 0001, 0, Command::fieldForIndexes(1, 3));
+
+    CommandStore::load2->execute(machine, 0001, 0, Command::fieldForIndexes(2, 4));
+
+    CommandStore::load3->execute(machine, 0001, 0, Command::fieldForIndexes(2, 5));
+
+    CommandStore::load4->execute(machine, 0001, 0, Command::fieldForIndexes(1, 4));
+
+    CommandStore::load5->execute(machine, 0001, 0, Command::fieldForIndexes(1, 5));
+
+    CommandStore::load6->execute(machine, 0001, 0, Command::fieldForIndexes(0, 5));
+
     machine->showRegisters();
     machine->showCells(0, 20);
 }
