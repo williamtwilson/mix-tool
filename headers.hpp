@@ -3,23 +3,13 @@
 
 #include "Source/Byte.hpp"
 #include "Source/Comparison.hpp"
-#include "Source/Commands/EnterA.hpp"
-#include "Source/Commands/EnterX.hpp"
-#include "Source/Commands/Enter1.hpp"
-#include "Source/Commands/Enter2.hpp"
-#include "Source/Commands/Enter3.hpp"
-#include "Source/Commands/Enter4.hpp"
-#include "Source/Commands/Enter5.hpp"
-#include "Source/Commands/Enter6.hpp"
-#include "Source/Commands/LoadA.hpp"
-#include "Source/Commands/LoadX.hpp"
+#include "Source/Commands/CommandStore.hpp"
 #include <iostream>
 #include "Source/Machine.hpp"
 #include "Source/Memory.hpp"
 #include "Source/Overflow.hpp"
 #include "Source/Register.hpp"
 #include "Source/Sign.hpp"
-#include "Source/Commands/StoreA.hpp"
 #include "Source/Word.hpp"
 
 #endif
