@@ -1,7 +1,11 @@
 #include "headers.hpp"
 
 int main() {
-    unsigned long something = 0 - (60 + (30 * 64) + (2 * 64 * 64) + (3 * 64 * 64 * 64) + (4 * 64 * 64 * 64 * 64));
+    unsigned long secondByte = 64;
+    unsigned long thirdByte = 64 * 64;
+    unsigned long fourthByte = 64 * 64 * 64;
+    unsigned long fifthByte = 64 * 64 * 64 * 64;
+    unsigned long something = 0 - (60 + (30 * secondByte) + (2 * thirdByte) + (3 * fourthByte) + (4 * fifthByte));
 
     std::shared_ptr<Machine> machine(std::make_shared<Machine>());
 
@@ -28,6 +32,15 @@ int main() {
 
     std::unique_ptr<LoadX> loadX(std::make_unique<LoadX>());
     loadX->execute(machine, 0001, 0, Command::fieldForIndexes(0, 1));
+
+    std::unique_ptr<Enter4> enter4(std::make_unique<Enter4>());
+    enter4->execute(machine, something - (3 * thirdByte), 0, 2);
+
+    std::unique_ptr<Enter5> enter5(std::make_unique<Enter5>());
+    enter5->execute(machine, something - (2 * fifthByte), 0, 2);
+
+    std::unique_ptr<Enter6> enter6(std::make_unique<Enter6>());
+    enter6->execute(machine, something - (10 * fifthByte), 0, 2);
 
     machine->showRegisters();
     machine->showCells(0, 20);

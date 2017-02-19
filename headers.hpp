@@ -8,6 +8,9 @@
 #include "Source/Commands/Enter1.hpp"
 #include "Source/Commands/Enter2.hpp"
 #include "Source/Commands/Enter3.hpp"
+#include "Source/Commands/Enter4.hpp"
+#include "Source/Commands/Enter5.hpp"
+#include "Source/Commands/Enter6.hpp"
 #include "Source/Commands/LoadA.hpp"
 #include "Source/Commands/LoadX.hpp"
 #include <iostream>
