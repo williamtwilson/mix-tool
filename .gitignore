@@ -8,4 +8,6 @@ install_manifest.txt
 # Binary
 mix
 mix_debug
+*.o
+*.a
 *.dSYM/
