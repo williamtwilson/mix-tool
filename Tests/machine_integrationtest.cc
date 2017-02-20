@@ -131,3 +131,45 @@ TEST_F(MachineTest, StoreA) {
     EXPECT_EQ(machine->memory->at(0000)->description(), "- 5 4 3 2 1");
 }
 
+TEST_F(MachineTest, Store1) {
+    CommandStore::enter1->execute(machine, negativeOneThroughFive, 0, 2);
+    CommandStore::store1->execute(machine, 0001, 0, Command::fieldForIndexes(1, 3));
+    EXPECT_EQ(machine->memory->at(0001)->description(), "+ 3 2 1 0 0");
+}
+
+TEST_F(MachineTest, Store2) {
+    CommandStore::enter2->execute(machine, negativeOneThroughFive, 0, 2);
+    CommandStore::store2->execute(machine, 0002, 0, Command::fieldForIndexes(2, 3));
+    EXPECT_EQ(machine->memory->at(0002)->description(), "+ 0 2 1 0 0");
+}
+
+TEST_F(MachineTest, Store3) {
+    CommandStore::enter3->execute(machine, negativeOneThroughFive, 0, 2);
+    CommandStore::store3->execute(machine, 0003, 0, Command::fieldForIndexes(3, 3));
+    EXPECT_EQ(machine->memory->at(0003)->description(), "+ 0 0 1 0 0");
+}
+
+TEST_F(MachineTest, Store4) {
+    CommandStore::enter4->execute(machine, negativeOneThroughFive, 0, 2);
+    CommandStore::store4->execute(machine, 0004, 0, Command::fieldForIndexes(1, 3));
+    EXPECT_EQ(machine->memory->at(0004)->description(), "+ 3 2 1 0 0");
+}
+
+TEST_F(MachineTest, Store5) {
+    CommandStore::enter5->execute(machine, negativeOneThroughFive, 0, 2);
+    CommandStore::store5->execute(machine, 0005, 0, Command::fieldForIndexes(1, 3));
+    EXPECT_EQ(machine->memory->at(0005)->description(), "+ 3 2 1 0 0");
+}
+
+TEST_F(MachineTest, Store6) {
+    CommandStore::enter6->execute(machine, negativeOneThroughFive, 0, 2);
+    CommandStore::store6->execute(machine, 0006, 0, Command::fieldForIndexes(1, 3));
+    EXPECT_EQ(machine->memory->at(0006)->description(), "+ 3 2 1 0 0");
+}
+
+TEST_F(MachineTest, StoreX) {
+    CommandStore::enterX->execute(machine, negativeOneThroughFive, 0, 2);
+    CommandStore::storeX->execute(machine, 0001, 0, Command::fieldForIndexes(1, 3));
+    EXPECT_EQ(machine->memory->at(0001)->description(), "+ 3 2 1 0 0");
+}
+

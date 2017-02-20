@@ -53,3 +53,24 @@ target_link_libraries(LoadX Command)
 add_library(StoreA StoreA.cpp)
 target_link_libraries(StoreA Command)
 
+add_library(Store1 Store1.cpp)
+target_link_libraries(Store1 Command)
+
+add_library(Store2 Store2.cpp)
+target_link_libraries(Store2 Command)
+
+add_library(Store3 Store3.cpp)
+target_link_libraries(Store3 Command)
+
+add_library(Store4 Store4.cpp)
+target_link_libraries(Store4 Command)
+
+add_library(Store5 Store5.cpp)
+target_link_libraries(Store5 Command)
+
+add_library(Store6 Store6.cpp)
+target_link_libraries(Store6 Command)
+
+add_library(StoreX StoreX.cpp)
+target_link_libraries(StoreX Command)
+

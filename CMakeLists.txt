@@ -11,7 +11,7 @@ add_subdirectory(googletest)
 set(SOURCES 
     Machine EnterA Enter1 Enter2 Enter3 Enter4 Enter5 Enter6 EnterX
     LoadA Load1 Load2 Load3 Load4 Load5 Load6 LoadX
-    StoreA)
+    StoreA Store1 Store2 Store3 Store4 Store5 Store6 StoreX)
 
 add_executable(mix main.cpp)
 target_link_libraries(mix ${SOURCES})

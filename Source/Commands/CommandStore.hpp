@@ -20,6 +20,13 @@
 #include "LoadX.hpp"
 
 #include "StoreA.hpp"
+#include "Store1.hpp"
+#include "Store2.hpp"
+#include "Store3.hpp"
+#include "Store4.hpp"
+#include "Store5.hpp"
+#include "Store6.hpp"
+#include "StoreX.hpp"
 
 namespace CommandStore {
     std::unique_ptr<EnterA> enterA(std::make_unique<EnterA>());
@@ -41,6 +48,13 @@ namespace CommandStore {
     std::unique_ptr<LoadX> loadX(std::make_unique<LoadX>());
 
     std::unique_ptr<StoreA> storeA(std::make_unique<StoreA>());
+    std::unique_ptr<Store1> store1(std::make_unique<Store1>());
+    std::unique_ptr<Store2> store2(std::make_unique<Store2>());
+    std::unique_ptr<Store3> store3(std::make_unique<Store3>());
+    std::unique_ptr<Store4> store4(std::make_unique<Store4>());
+    std::unique_ptr<Store5> store5(std::make_unique<Store5>());
+    std::unique_ptr<Store6> store6(std::make_unique<Store6>());
+    std::unique_ptr<StoreX> storeX(std::make_unique<StoreX>());
 }
 
 #endif
