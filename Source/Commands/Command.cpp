@@ -58,3 +58,22 @@ unsigned short Command::secondFieldIndex(unsigned short field) {
     return field % 8;
 }
 
+void Command::store(std::shared_ptr<Machine> machine, std::shared_ptr<Register> reg, unsigned long address, unsigned short field) {
+    unsigned short f = firstFieldIndex(field);
+    unsigned short l = secondFieldIndex(field);
+
+    if (address <= 4000) {
+        std::shared_ptr<Word> m = machine->lookupMemoryCell(address);
+        std::shared_ptr<Word> regWord = reg->read();
+
+        if (f == 0) {
+            m->setSign(regWord->sign());
+            f = 1;
+        }
+
+        for (int i = l; i >= f; i--) {
+            m->setAt(i, regWord->at(5 - (l - i)));
+        }
+    }
+}
+
