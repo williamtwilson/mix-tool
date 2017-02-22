@@ -26,6 +26,14 @@ Word::Word(long num): s(Sign::positive), fields(std::make_shared<std::array<Byte
     }
 }
 
+unsigned long Word::address() {
+    return at(1) * 64 + at(2);
+}
+
+unsigned short Word::command() {
+    return at(5);
+}
+
 std::string Word::description() {
     std::stringstream stream = std::stringstream();
     stream << signDescription(s);
@@ -37,6 +45,14 @@ std::string Word::description() {
         stream << std::to_string(fields->at(i));
     }
     return stream.str();
+}
+
+unsigned short Word::field() {
+    return at(4);
+}
+
+unsigned short Word::index() {
+    return at(3);
 }
 
 Sign Word::sign() {

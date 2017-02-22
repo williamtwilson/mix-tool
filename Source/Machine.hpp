@@ -11,6 +11,7 @@
 class Machine {
     public:
         Overflow overflowToggle;
+        unsigned long commandPointer;
         Comparison comparisonIndicator;
 
         std::shared_ptr<Register> rA;

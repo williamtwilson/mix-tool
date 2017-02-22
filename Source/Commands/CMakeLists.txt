@@ -1,6 +1,10 @@
 add_library(Command Command.cpp)
 target_link_libraries(Command Machine)
 
+add_library(NoOperation NoOperation.cpp)
+target_link_libraries(NoOperation Command)
+
+
 add_library(EnterA EnterA.cpp)
 target_link_libraries(EnterA Command)
 

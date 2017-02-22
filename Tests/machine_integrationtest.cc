@@ -29,147 +29,153 @@ class MachineTest: public testing::Test {
     }
 };
 
+TEST_F(MachineTest, NoOperation) {
+    CommandStore::lookupCommandByCode(0)->execute(machine, oneThroughFive, 0, 0);
+    EXPECT_EQ(machine->rA->contentsToLong(), 0);
+    EXPECT_EQ(machine->rA->description(), "+ 0 0 0 0 0");
+}
+
 TEST_F(MachineTest, EnterA) {
-    CommandStore::enterA->execute(machine, oneThroughFive, 0, 2);
+    CommandStore::lookupCommandByCode(48)->execute(machine, oneThroughFive, 0, 2);
     EXPECT_EQ(machine->rA->contentsToLong(), oneThroughFive);
     EXPECT_EQ(machine->rA->description(), "+ 5 4 3 2 1");
 }
 
 TEST_F(MachineTest, Enter1) {
-    CommandStore::enter1->execute(machine, oneThroughFive, 0, 2);
+    CommandStore::lookupCommandByCode(49)->execute(machine, oneThroughFive, 0, 2);
     EXPECT_EQ(machine->rI1->contentsToLong(), oneThroughFive);
     EXPECT_EQ(machine->rI1->description(), "+ 5 4 3 2 1");
 }
 
 TEST_F(MachineTest, Enter2) {
-    CommandStore::enter2->execute(machine, negativeOneThroughFive, 0, 2);
+    CommandStore::lookupCommandByCode(50)->execute(machine, negativeOneThroughFive, 0, 2);
     EXPECT_EQ(machine->rI2->contentsToLong(), negativeOneThroughFive);
     EXPECT_EQ(machine->rI2->description(), "- 5 4 3 2 1");
 }
 
 TEST_F(MachineTest, Enter3) {
-    CommandStore::enter3->execute(machine, oneThroughFive, 0, 2);
+    CommandStore::lookupCommandByCode(51)->execute(machine, oneThroughFive, 0, 2);
     EXPECT_EQ(machine->rI3->contentsToLong(), oneThroughFive);
     EXPECT_EQ(machine->rI3->description(), "+ 5 4 3 2 1");
 }
 
 TEST_F(MachineTest, Enter4) {
-    CommandStore::enter4->execute(machine, oneThroughFive, 0, 2);
+    CommandStore::lookupCommandByCode(52)->execute(machine, oneThroughFive, 0, 2);
     EXPECT_EQ(machine->rI4->contentsToLong(), oneThroughFive);
     EXPECT_EQ(machine->rI4->description(), "+ 5 4 3 2 1");
 }
 
 TEST_F(MachineTest, Enter5) {
-    CommandStore::enter5->execute(machine, oneThroughFive, 0, 2);
+    CommandStore::lookupCommandByCode(53)->execute(machine, oneThroughFive, 0, 2);
     EXPECT_EQ(machine->rI5->contentsToLong(), oneThroughFive);
     EXPECT_EQ(machine->rI5->description(), "+ 5 4 3 2 1");
 }
 
 TEST_F(MachineTest, Enter6) {
-    CommandStore::enter6->execute(machine, oneThroughFive, 0, 2);
+    CommandStore::lookupCommandByCode(54)->execute(machine, oneThroughFive, 0, 2);
     EXPECT_EQ(machine->rI6->contentsToLong(), oneThroughFive);
     EXPECT_EQ(machine->rI6->description(), "+ 5 4 3 2 1");
 }
 
 TEST_F(MachineTest, EnterX) {
-    CommandStore::enterX->execute(machine, oneThroughFive, 0, 2);
+    CommandStore::lookupCommandByCode(55)->execute(machine, oneThroughFive, 0, 2);
     EXPECT_EQ(machine->rX->contentsToLong(), oneThroughFive);
     EXPECT_EQ(machine->rX->description(), "+ 5 4 3 2 1");
 }
 
 TEST_F(MachineTest, LoadA) {
     fillZero();
-    CommandStore::loadA->execute(machine, 0000, 0, Command::fieldForIndexes(1, 2));
+    CommandStore::lookupCommandByCode(8)->execute(machine, 0000, 0, Command::fieldForIndexes(1, 2));
     EXPECT_EQ(machine->rA->description(), "+ 0 0 0 5 4");
 }
 
 TEST_F(MachineTest, Load1) {
     fillZero();
-    CommandStore::load1->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
+    CommandStore::lookupCommandByCode(9)->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
     EXPECT_EQ(machine->rI1->description(), "- 5 4 3 2 1");
 }
 
 TEST_F(MachineTest, Load2) {
     fillZero();
-    CommandStore::load2->execute(machine, 0000, 0, Command::fieldForIndexes(3, 4));
+    CommandStore::lookupCommandByCode(10)->execute(machine, 0000, 0, Command::fieldForIndexes(3, 4));
     EXPECT_EQ(machine->rI2->description(), "+ 0 0 0 3 2");
 }
 
 TEST_F(MachineTest, Load3) {
     fillZero();
-    CommandStore::load3->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
+    CommandStore::lookupCommandByCode(11)->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
     EXPECT_EQ(machine->rI3->description(), "- 5 4 3 2 1");
 }
 
 TEST_F(MachineTest, Load4) {
     fillZero();
-    CommandStore::load4->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
+    CommandStore::lookupCommandByCode(12)->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
     EXPECT_EQ(machine->rI4->description(), "- 5 4 3 2 1");
 }
 
 TEST_F(MachineTest, Load5) {
     fillZero();
-    CommandStore::load5->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
+    CommandStore::lookupCommandByCode(13)->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
     EXPECT_EQ(machine->rI5->description(), "- 5 4 3 2 1");
 }
 
 TEST_F(MachineTest, Load6) {
     fillZero();
-    CommandStore::load6->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
+    CommandStore::lookupCommandByCode(14)->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
     EXPECT_EQ(machine->rI6->description(), "- 5 4 3 2 1");
 }
 
 TEST_F(MachineTest, LoadX) {
     fillZero();
-    CommandStore::loadX->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
+    CommandStore::lookupCommandByCode(15)->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
     EXPECT_EQ(machine->rX->description(), "- 5 4 3 2 1");
 }
 
 TEST_F(MachineTest, StoreA) {
     CommandStore::enterA->execute(machine, negativeOneThroughFive, 0, 2);
-    CommandStore::storeA->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
+    CommandStore::lookupCommandByCode(24)->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
     EXPECT_EQ(machine->memory->at(0000)->description(), "- 5 4 3 2 1");
 }
 
 TEST_F(MachineTest, Store1) {
     CommandStore::enter1->execute(machine, negativeOneThroughFive, 0, 2);
-    CommandStore::store1->execute(machine, 0001, 0, Command::fieldForIndexes(1, 3));
+    CommandStore::lookupCommandByCode(25)->execute(machine, 0001, 0, Command::fieldForIndexes(1, 3));
     EXPECT_EQ(machine->memory->at(0001)->description(), "+ 3 2 1 0 0");
 }
 
 TEST_F(MachineTest, Store2) {
     CommandStore::enter2->execute(machine, negativeOneThroughFive, 0, 2);
-    CommandStore::store2->execute(machine, 0002, 0, Command::fieldForIndexes(2, 3));
+    CommandStore::lookupCommandByCode(26)->execute(machine, 0002, 0, Command::fieldForIndexes(2, 3));
     EXPECT_EQ(machine->memory->at(0002)->description(), "+ 0 2 1 0 0");
 }
 
 TEST_F(MachineTest, Store3) {
     CommandStore::enter3->execute(machine, negativeOneThroughFive, 0, 2);
-    CommandStore::store3->execute(machine, 0003, 0, Command::fieldForIndexes(3, 3));
+    CommandStore::lookupCommandByCode(27)->execute(machine, 0003, 0, Command::fieldForIndexes(3, 3));
     EXPECT_EQ(machine->memory->at(0003)->description(), "+ 0 0 1 0 0");
 }
 
 TEST_F(MachineTest, Store4) {
     CommandStore::enter4->execute(machine, negativeOneThroughFive, 0, 2);
-    CommandStore::store4->execute(machine, 0004, 0, Command::fieldForIndexes(1, 3));
+    CommandStore::lookupCommandByCode(28)->execute(machine, 0004, 0, Command::fieldForIndexes(1, 3));
     EXPECT_EQ(machine->memory->at(0004)->description(), "+ 3 2 1 0 0");
 }
 
 TEST_F(MachineTest, Store5) {
     CommandStore::enter5->execute(machine, negativeOneThroughFive, 0, 2);
-    CommandStore::store5->execute(machine, 0005, 0, Command::fieldForIndexes(1, 3));
+    CommandStore::lookupCommandByCode(29)->execute(machine, 0005, 0, Command::fieldForIndexes(1, 3));
     EXPECT_EQ(machine->memory->at(0005)->description(), "+ 3 2 1 0 0");
 }
 
 TEST_F(MachineTest, Store6) {
     CommandStore::enter6->execute(machine, negativeOneThroughFive, 0, 2);
-    CommandStore::store6->execute(machine, 0006, 0, Command::fieldForIndexes(1, 3));
+    CommandStore::lookupCommandByCode(30)->execute(machine, 0006, 0, Command::fieldForIndexes(1, 3));
     EXPECT_EQ(machine->memory->at(0006)->description(), "+ 3 2 1 0 0");
 }
 
 TEST_F(MachineTest, StoreX) {
     CommandStore::enterX->execute(machine, negativeOneThroughFive, 0, 2);
-    CommandStore::storeX->execute(machine, 0001, 0, Command::fieldForIndexes(1, 3));
+    CommandStore::lookupCommandByCode(31)->execute(machine, 0001, 0, Command::fieldForIndexes(1, 3));
     EXPECT_EQ(machine->memory->at(0001)->description(), "+ 3 2 1 0 0");
 }
 

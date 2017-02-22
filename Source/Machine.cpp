@@ -2,6 +2,7 @@
 
 Machine::Machine(): 
     overflowToggle(Overflow::off),
+    commandPointer(0),
     comparisonIndicator(Comparison::less),
     rA(std::make_shared<Register>()),
     rX(std::make_shared<Register>()),
@@ -19,18 +20,23 @@ std::shared_ptr<Register> Machine::lookupRegister(unsigned short index) {
         case 1:
             return rI1;
             break;
+
         case 2:
             return rI2;
             break;
+
         case 3:
             return rI3;
             break;
+
         case 4:
             return rI4;
             break;
+
         case 5:
             return rI5;
             break;
+
         case 6:
             return rI6;
             break;

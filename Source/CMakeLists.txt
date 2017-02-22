@@ -12,5 +12,8 @@ target_link_libraries(Memory Word)
 add_library(Machine Machine.cpp)
 target_link_libraries(Machine Memory Register)
 
+add_library(Runtime Runtime.cpp)
+target_link_libraries(Runtime Machine)
+
 add_subdirectory(Commands)
 
