@@ -13,7 +13,12 @@ Machine::Machine():
     rI5(std::make_shared<Register>()),
     rI6(std::make_shared<Register>()),
     rJ(std::make_shared<Register>()),
-    memory(std::make_shared<Memory>()){}
+    memory(std::make_shared<Memory>()),
+    cyclesPassed(0){}
+
+void Machine::incrementCycles(unsigned long cycles) {
+    cyclesPassed += cycles;
+}
 
 std::shared_ptr<Register> Machine::lookupRegister(unsigned short index) {
     switch (index) {
@@ -86,5 +91,9 @@ void Machine::showRegisters() {
         << "RI5 : " << rI5->description() << "\n"
         << "RI6 : " << rI6->description() << "\n"
         << "RJ  : " << rJ->description() << "\n";
+}
+
+unsigned long Machine::totalCycles() {
+    return cyclesPassed;
 }
 

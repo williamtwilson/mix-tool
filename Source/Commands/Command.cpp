@@ -11,9 +11,10 @@ unsigned long Command::adjustedAddress(std::shared_ptr<Machine> machine, unsigne
     return address;
 }
 
-void Command::enter(std::shared_ptr<Register> r, unsigned long address) {
+void Command::enter(std::shared_ptr<Machine> machine, std::shared_ptr<Register> r, unsigned long address) {
     std::shared_ptr<Word> w(std::make_shared<Word>(address));
     r->load(w);
+    machine->incrementCycles(1);
 }
 
 void Command::executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field) {}
@@ -51,6 +52,7 @@ void Command::load(std::shared_ptr<Machine> machine, std::shared_ptr<Register> r
         }
 
         r->load(tmp);
+        machine->incrementCycles(2);
     }
 }
 
@@ -74,6 +76,7 @@ void Command::store(std::shared_ptr<Machine> machine, std::shared_ptr<Register> 
         for (int i = l; i >= f; i--) {
             m->setAt(i, regWord->at(5 - (l - i)));
         }
+        machine->incrementCycles(2);
     }
 }
 

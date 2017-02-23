@@ -28,6 +28,8 @@ class Machine {
 
         Machine();
 
+        void incrementCycles(unsigned long cycles);
+
         std::shared_ptr<Register> lookupRegister(unsigned short);
 
         std::shared_ptr<Word> lookupMemoryCell(unsigned long);
@@ -36,6 +38,11 @@ class Machine {
         void showCells(unsigned long start, unsigned long end);
 
         void showRegisters();
+
+        unsigned long totalCycles();
+
+    private:
+        unsigned long cyclesPassed;
 };
 
 #endif

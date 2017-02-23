@@ -63,7 +63,7 @@ namespace CommandStore {
     std::shared_ptr<Enter6> enter6(std::make_shared<Enter6>());
     std::shared_ptr<EnterX> enterX(std::make_shared<EnterX>());
 
-    std::shared_ptr<Command> lookupCommandByCode(unsigned short code) {
+    std::shared_ptr<Command> lookupCommandByCode(unsigned short code, unsigned short field) {
         switch (code) {
             case 0:
                 return noOperation;
@@ -137,35 +137,67 @@ namespace CommandStore {
 
 
             case 48:
-                return enterA;
+                switch (field) {
+                    case 2:
+                        return enterA;
+                        break;
+                }
                 break;
 
             case 49:
-                return enter1;
+                switch (field) {
+                    case 2:
+                        return enter1;
+                        break;
+                }
                 break;
 
             case 50:
-                return enter2;
+                switch (field) {
+                    case 2:
+                        return enter2;
+                        break;
+                }
                 break;
 
             case 51:
-                return enter3;
+                switch (field) {
+                    case 2:
+                        return enter3;
+                        break;
+                }
                 break;
 
             case 52:
-                return enter4;
+                switch (field) {
+                    case 2:
+                        return enter4;
+                        break;
+                }
                 break;
 
             case 53:
-                return enter5;
+                switch (field) {
+                    case 2:
+                        return enter5;
+                        break;
+                }
                 break;
 
             case 54:
-                return enter6;
+                switch (field) {
+                    case 2:
+                        return enter6;
+                        break;
+                }
                 break;
 
             case 55:
-                return enterX;
+                switch (field) {
+                    case 2:
+                        return enterX;
+                        break;
+                }
                 break;
         }
 
