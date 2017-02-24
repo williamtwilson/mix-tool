@@ -12,3 +12,7 @@ std::shared_ptr<Word> Memory::at(unsigned long index) {
     return cells->at(index);
 }
 
+void Memory::setAt(unsigned long index, std::shared_ptr<Word> value) {
+    cells->at(index) = value;
+}
+

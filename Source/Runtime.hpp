@@ -9,6 +9,7 @@ class Runtime {
 
         Runtime();
 
+        void executeNextCommand();
         void executeWord(std::shared_ptr<Word>);
 };
 

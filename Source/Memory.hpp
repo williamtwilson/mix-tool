@@ -11,6 +11,7 @@ class Memory {
 
         Memory();
         std::shared_ptr<Word> at(unsigned long);
+        void setAt(unsigned long index, std::shared_ptr<Word> value);
 };
 
 #endif

@@ -2,6 +2,12 @@
 
 Runtime::Runtime(): machine(std::make_shared<Machine>()) {}
 
+void Runtime::executeNextCommand() {
+    unsigned long address = machine->currentCommandAddress();
+    std::shared_ptr<Word> commandWord = machine->memory->at(address);
+    executeWord(commandWord);
+}
+
 void Runtime::executeWord(std::shared_ptr<Word> word) {
     unsigned long address = word->address();
     unsigned short command = word->command();

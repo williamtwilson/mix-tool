@@ -12,11 +12,53 @@ class RuntimeTest: public testing::Test {
         }
 };
 
-TEST_F(RuntimeTest, EnterA) {
-    std::shared_ptr<Word> enterAWord = std::make_shared<Word>(Sign::positive, 1, 2, 0, 2, 48);
-    runtime->executeWord(enterAWord);
+TEST_F(RuntimeTest, Enters) {
+    runtime->machine->memory->setAt(0, std::make_shared<Word>(Sign::positive, 1, 2, 0, 2, 48));
+    runtime->executeNextCommand();
     EXPECT_EQ(runtime->machine->rA->description(), "+ 0 0 0 1 2");
     EXPECT_EQ(runtime->machine->totalCycles(), 1);
     EXPECT_EQ(runtime->machine->currentCommandAddress(), 1);
+
+    runtime->machine->memory->setAt(1, std::make_shared<Word>(Sign::positive, 2, 3, 0, 2, 49));
+    runtime->executeNextCommand();
+    EXPECT_EQ(runtime->machine->rI1->description(), "+ 0 0 0 2 3");
+    EXPECT_EQ(runtime->machine->totalCycles(), 2);
+    EXPECT_EQ(runtime->machine->currentCommandAddress(), 2);
+
+    runtime->machine->memory->setAt(2, std::make_shared<Word>(Sign::positive, 2, 3, 0, 2, 50));
+    runtime->executeNextCommand();
+    EXPECT_EQ(runtime->machine->rI2->description(), "+ 0 0 0 2 3");
+    EXPECT_EQ(runtime->machine->totalCycles(), 3);
+    EXPECT_EQ(runtime->machine->currentCommandAddress(), 3);
+
+    runtime->machine->memory->setAt(3, std::make_shared<Word>(Sign::positive, 2, 3, 0, 2, 51));
+    runtime->executeNextCommand();
+    EXPECT_EQ(runtime->machine->rI3->description(), "+ 0 0 0 2 3");
+    EXPECT_EQ(runtime->machine->totalCycles(), 4);
+    EXPECT_EQ(runtime->machine->currentCommandAddress(), 4);
+
+    runtime->machine->memory->setAt(4, std::make_shared<Word>(Sign::positive, 2, 3, 0, 2, 52));
+    runtime->executeNextCommand();
+    EXPECT_EQ(runtime->machine->rI4->description(), "+ 0 0 0 2 3");
+    EXPECT_EQ(runtime->machine->totalCycles(), 5);
+    EXPECT_EQ(runtime->machine->currentCommandAddress(), 5);
+
+    runtime->machine->memory->setAt(5, std::make_shared<Word>(Sign::positive, 2, 3, 0, 2, 53));
+    runtime->executeNextCommand();
+    EXPECT_EQ(runtime->machine->rI3->description(), "+ 0 0 0 2 3");
+    EXPECT_EQ(runtime->machine->totalCycles(), 6);
+    EXPECT_EQ(runtime->machine->currentCommandAddress(), 6);
+
+    runtime->machine->memory->setAt(6, std::make_shared<Word>(Sign::positive, 2, 3, 0, 2, 54));
+    runtime->executeNextCommand();
+    EXPECT_EQ(runtime->machine->rI3->description(), "+ 0 0 0 2 3");
+    EXPECT_EQ(runtime->machine->totalCycles(), 7);
+    EXPECT_EQ(runtime->machine->currentCommandAddress(), 7);
+
+    runtime->machine->memory->setAt(7, std::make_shared<Word>(Sign::positive, 2, 3, 0, 2, 55));
+    runtime->executeNextCommand();
+    EXPECT_EQ(runtime->machine->rI3->description(), "+ 0 0 0 2 3");
+    EXPECT_EQ(runtime->machine->totalCycles(), 8);
+    EXPECT_EQ(runtime->machine->currentCommandAddress(), 8);
 }
 
