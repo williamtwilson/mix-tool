@@ -11,7 +11,6 @@
 class Machine {
     public:
         Overflow overflowToggle;
-        unsigned long commandPointer;
         Comparison comparisonIndicator;
 
         std::shared_ptr<Register> rA;
@@ -28,11 +27,16 @@ class Machine {
 
         Machine();
 
+        unsigned long currentCommandAddress();
+
+        void incrementCommandPointer();
         void incrementCycles(unsigned long cycles);
 
         std::shared_ptr<Register> lookupRegister(unsigned short);
 
         std::shared_ptr<Word> lookupMemoryCell(unsigned long);
+
+        void setCommandPointer(unsigned long address);
 
         void showCell(unsigned long index);
         void showCells(unsigned long start, unsigned long end);
@@ -42,6 +46,7 @@ class Machine {
         unsigned long totalCycles();
 
     private:
+        unsigned long commandPointer;
         unsigned long cyclesPassed;
 };
 

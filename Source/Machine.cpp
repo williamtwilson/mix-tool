@@ -2,7 +2,6 @@
 
 Machine::Machine(): 
     overflowToggle(Overflow::off),
-    commandPointer(0),
     comparisonIndicator(Comparison::less),
     rA(std::make_shared<Register>()),
     rX(std::make_shared<Register>()),
@@ -14,7 +13,16 @@ Machine::Machine():
     rI6(std::make_shared<Register>()),
     rJ(std::make_shared<Register>()),
     memory(std::make_shared<Memory>()),
+    commandPointer(0),
     cyclesPassed(0){}
+
+unsigned long Machine::currentCommandAddress() {
+    return commandPointer;
+}
+
+void Machine::incrementCommandPointer() {
+    ++commandPointer;
+}
 
 void Machine::incrementCycles(unsigned long cycles) {
     cyclesPassed += cycles;
@@ -72,6 +80,10 @@ void Machine::showCell(unsigned long index) {
     std::shared_ptr<Word> w = lookupMemoryCell(index);
 
     std::cout << w->description() << "\n";
+}
+
+void Machine::setCommandPointer(unsigned long address) {
+    commandPointer = address;
 }
 
 void Machine::showCells(unsigned long start, unsigned long end) {

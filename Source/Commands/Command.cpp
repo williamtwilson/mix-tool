@@ -15,6 +15,7 @@ void Command::enter(std::shared_ptr<Machine> machine, std::shared_ptr<Register> 
     std::shared_ptr<Word> w(std::make_shared<Word>(address));
     r->load(w);
     machine->incrementCycles(1);
+    machine->incrementCommandPointer();
 }
 
 void Command::executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field) {}
@@ -54,6 +55,7 @@ void Command::load(std::shared_ptr<Machine> machine, std::shared_ptr<Register> r
         r->load(tmp);
         machine->incrementCycles(2);
     }
+    machine->incrementCommandPointer();
 }
 
 unsigned short Command::secondFieldIndex(unsigned short field) {
@@ -78,5 +80,6 @@ void Command::store(std::shared_ptr<Machine> machine, std::shared_ptr<Register> 
         }
         machine->incrementCycles(2);
     }
+    machine->incrementCommandPointer();
 }
 
