@@ -4,29 +4,29 @@
 class MachineTest: public testing::Test {
     protected:
 
-    std::shared_ptr<Machine> machine;
-    unsigned long secondByte;
-    unsigned long thirdByte;
-    unsigned long fourthByte;
-    unsigned long fifthByte;
-    unsigned long oneThroughFive;
-    unsigned long negativeOneThroughFive;
+        std::shared_ptr<Machine> machine;
+        unsigned long secondByte;
+        unsigned long thirdByte;
+        unsigned long fourthByte;
+        unsigned long fifthByte;
+        unsigned long oneThroughFive;
+        unsigned long negativeOneThroughFive;
 
-    virtual void SetUp() {
-        machine = std::make_shared<Machine>();
-        secondByte = 64;
-        thirdByte = 64 * 64;
-        fourthByte = 64 * 64 * 64;
-        fifthByte = 64 * 64 * 64 * 64;
-        oneThroughFive = 1 + 2 * secondByte + 3 * thirdByte + 4 * fourthByte + 5 * fifthByte;
-        negativeOneThroughFive = 0 - oneThroughFive;
-    }
+        virtual void SetUp() {
+            machine = std::make_shared<Machine>();
+            secondByte = 64;
+            thirdByte = 64 * 64;
+            fourthByte = 64 * 64 * 64;
+            fifthByte = 64 * 64 * 64 * 64;
+            oneThroughFive = 1 + 2 * secondByte + 3 * thirdByte + 4 * fourthByte + 5 * fifthByte;
+            negativeOneThroughFive = 0 - oneThroughFive;
+        }
 
-    virtual void fillZero() {
-        CommandStore::enterA->execute(machine, negativeOneThroughFive, 0, 2);
-        CommandStore::storeA->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
-        CommandStore::enterA->execute(machine, 0, 0, 2);
-    }
+        virtual void fillZero() {
+            CommandStore::enterA->execute(machine, negativeOneThroughFive, 0, 2);
+            CommandStore::storeA->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
+            CommandStore::enterA->execute(machine, 0, 0, 2);
+        }
 };
 
 TEST_F(MachineTest, NoOperation) {

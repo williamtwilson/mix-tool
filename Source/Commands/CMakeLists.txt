@@ -78,3 +78,12 @@ target_link_libraries(Store6 Command)
 add_library(StoreX StoreX.cpp)
 target_link_libraries(StoreX Command)
 
+
+set(COMMANDS 
+    LoadA Load1 Load2 Load3 Load4 Load5 Load6 LoadX
+    StoreA Store1 Store2 Store3 Store4 Store5 Store6 StoreX
+    EnterA Enter1 Enter2 Enter3 Enter4 Enter5 Enter6 EnterX)
+
+add_library(CommandStore CommandStore.cpp)
+target_link_libraries(CommandStore ${Commands})
+
