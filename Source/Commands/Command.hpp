@@ -20,6 +20,7 @@ class Command {
         virtual void executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field);
         static unsigned short firstFieldIndex(unsigned short field);
         void load(std::shared_ptr<Machine> machine, std::shared_ptr<Register> r, unsigned long address, unsigned short field);
+        void loadNegative(std::shared_ptr<Machine> machine, std::shared_ptr<Register> r, unsigned long address, unsigned short field);
         static unsigned short secondFieldIndex(unsigned short field);
         void store(std::shared_ptr<Machine> machine, std::shared_ptr<Register> reg, unsigned long address, unsigned short field);
 

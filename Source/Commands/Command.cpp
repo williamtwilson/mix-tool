@@ -58,6 +58,34 @@ void Command::load(std::shared_ptr<Machine> machine, std::shared_ptr<Register> r
     machine->incrementCommandPointer();
 }
 
+void Command::loadNegative(std::shared_ptr<Machine> machine, std::shared_ptr<Register> r, unsigned long address, unsigned short field) {
+    unsigned short f = firstFieldIndex(field);
+    unsigned short l = secondFieldIndex(field);
+
+    if (address <= 4000) {
+        std::shared_ptr<Word> m = machine->lookupMemoryCell(address);
+
+        std::shared_ptr<Word> tmp(std::make_shared<Word>());
+
+        if (f == 0) {
+            if (m->sign() == Sign::positive) {
+                tmp->setSign(Sign::negative);
+            } else {
+                tmp->setSign(Sign::positive);
+            }
+            f = 1;
+        }
+
+        for (int i = 5; l >= f; i--, l--) {
+            tmp->setAt(i, m->at(l));
+        }
+
+        r->load(tmp);
+        machine->incrementCycles(2);
+    }
+    machine->incrementCommandPointer();
+}
+
 unsigned short Command::secondFieldIndex(unsigned short field) {
     return field % 8;
 }
