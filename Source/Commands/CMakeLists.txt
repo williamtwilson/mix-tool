@@ -4,6 +4,9 @@ target_link_libraries(Command Machine)
 add_library(NoOperation NoOperation.cpp)
 target_link_libraries(NoOperation Command)
 
+add_library(Add Add.cpp)
+target_link_libraries(Add Command)
+
 
 add_library(EnterA EnterA.cpp)
 target_link_libraries(EnterA Command)
@@ -80,6 +83,7 @@ target_link_libraries(StoreX Command)
 
 
 set(COMMANDS 
+    NoOperation Add
     LoadA Load1 Load2 Load3 Load4 Load5 Load6 LoadX
     StoreA Store1 Store2 Store3 Store4 Store5 Store6 StoreX
     EnterA Enter1 Enter2 Enter3 Enter4 Enter5 Enter6 EnterX)

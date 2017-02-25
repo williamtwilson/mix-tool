@@ -1,6 +1,7 @@
 #include "CommandStore.hpp"
 
 std::shared_ptr<NoOperation> CommandStore::noOperation = std::make_shared<NoOperation>();
+std::shared_ptr<Add> CommandStore::add = std::make_shared<Add>();
 
 std::shared_ptr<LoadA> CommandStore::loadA = std::make_shared<LoadA>();
 std::shared_ptr<Load1> CommandStore::load1 = std::make_shared<Load1>();
@@ -35,6 +36,9 @@ std::shared_ptr<Command> CommandStore::lookupCommandByCode(unsigned short code, 
             return noOperation;
             break;
 
+        case 1:
+            return add;
+            break;
 
         case 8:
             return loadA;

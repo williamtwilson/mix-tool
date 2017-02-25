@@ -4,7 +4,7 @@
 #include <utility>
 
 #include "NoOperation.hpp"
-
+#include "Add.hpp"
 
 #include "EnterA.hpp"
 #include "Enter1.hpp"
@@ -35,6 +35,7 @@
 
 namespace CommandStore {
     extern std::shared_ptr<NoOperation> noOperation;
+    extern std::shared_ptr<Add> add;
 
     extern std::shared_ptr<LoadA> loadA;
     extern std::shared_ptr<Load1> load1;

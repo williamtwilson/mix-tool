@@ -37,6 +37,47 @@ TEST_F(MachineTest, NoOperation) {
     EXPECT_EQ(machine->currentCommandAddress(), 1);
 }
 
+TEST_F(MachineTest, Add1) {
+    CommandStore::enterA->execute(machine, oneThroughFive, 0, 2);
+    CommandStore::storeA->execute(machine, 0, 0, Command::fieldForIndexes(0,5));
+    CommandStore::add->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+    EXPECT_EQ(machine->rA->description(), "+ 10 8 6 4 2");
+    EXPECT_EQ(machine->overflowToggle, Overflow::off);
+    EXPECT_EQ(machine->totalCycles(), 5);
+    EXPECT_EQ(machine->currentCommandAddress(), 3);
+}
+
+TEST_F(MachineTest, Add2) {
+    CommandStore::enterA->execute(machine, oneThroughFive, 0, 2);
+    CommandStore::storeA->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+    CommandStore::add->execute(machine, 0, 0, Command::fieldForIndexes(1, 2));
+    EXPECT_EQ(machine->rA->description(), "+ 5 4 3 7 5");
+    EXPECT_EQ(machine->overflowToggle, Overflow::off);
+    EXPECT_EQ(machine->totalCycles(), 5);
+    EXPECT_EQ(machine->currentCommandAddress(), 3);
+}
+
+TEST_F(MachineTest, Add3) {
+    CommandStore::enterA->execute(machine, 63 * fifthByte, 0, 2);
+    CommandStore::storeA->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+    CommandStore::enterA->execute(machine, oneThroughFive + (3 * fifthByte), 0, 2);
+    CommandStore::add->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+    EXPECT_EQ(machine->rA->description(), "+ 7 4 3 2 1");
+    EXPECT_EQ(machine->overflowToggle, Overflow::on);
+    EXPECT_EQ(machine->totalCycles(), 6);
+    EXPECT_EQ(machine->currentCommandAddress(), 4);
+}
+
+TEST_F(MachineTest, Add4) {
+    machine->memory->setAt(0, std::make_shared<Word>(negativeOneThroughFive));
+    CommandStore::enterA->execute(machine, oneThroughFive, 0, 2);
+    CommandStore::add->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+    EXPECT_EQ(machine->rA->description(), "+ 0 0 0 0 0");
+    EXPECT_EQ(machine->overflowToggle, Overflow::off);
+    EXPECT_EQ(machine->totalCycles(), 3);
+    EXPECT_EQ(machine->currentCommandAddress(), 2);
+}
+
 
 TEST_F(MachineTest, EnterA) {
     CommandStore::lookupCommandByCode(48, 2)->execute(machine, oneThroughFive, 0, 2);
