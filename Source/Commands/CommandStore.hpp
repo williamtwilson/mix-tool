@@ -25,6 +25,13 @@
 #include "LoadX.hpp"
 
 #include "LoadANegative.hpp"
+#include "Load1Negative.hpp"
+#include "Load2Negative.hpp"
+#include "Load3Negative.hpp"
+#include "Load4Negative.hpp"
+#include "Load5Negative.hpp"
+#include "Load6Negative.hpp"
+#include "LoadXNegative.hpp"
 
 #include "StoreA.hpp"
 #include "Store1.hpp"
@@ -49,6 +56,13 @@ namespace CommandStore {
     extern std::shared_ptr<LoadX> loadX;
 
     extern std::shared_ptr<LoadANegative> loadANegative;
+    extern std::shared_ptr<Load1Negative> load1Negative;
+    extern std::shared_ptr<Load2Negative> load2Negative;
+    extern std::shared_ptr<Load3Negative> load3Negative;
+    extern std::shared_ptr<Load4Negative> load4Negative;
+    extern std::shared_ptr<Load5Negative> load5Negative;
+    extern std::shared_ptr<Load6Negative> load6Negative;
+    extern std::shared_ptr<LoadXNegative> loadXNegative;
 
     extern std::shared_ptr<StoreA> storeA;
     extern std::shared_ptr<Store1> store1;

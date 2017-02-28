@@ -61,6 +61,27 @@ target_link_libraries(LoadX Command)
 add_library(LoadANegative LoadANegative.cpp)
 target_link_libraries(LoadANegative Command)
 
+add_library(Load1Negative Load1Negative.cpp)
+target_link_libraries(Load1Negative Command)
+
+add_library(Load2Negative Load2Negative.cpp)
+target_link_libraries(Load2Negative Command)
+
+add_library(Load3Negative Load3Negative.cpp)
+target_link_libraries(Load3Negative Command)
+
+add_library(Load4Negative Load4Negative.cpp)
+target_link_libraries(Load4Negative Command)
+
+add_library(Load5Negative Load5Negative.cpp)
+target_link_libraries(Load5Negative Command)
+
+add_library(Load6Negative Load6Negative.cpp)
+target_link_libraries(Load6Negative Command)
+
+add_library(LoadXNegative LoadXNegative.cpp)
+target_link_libraries(LoadXNegative Command)
+
 
 add_library(StoreA StoreA.cpp)
 target_link_libraries(StoreA Command)
@@ -90,7 +111,7 @@ target_link_libraries(StoreX Command)
 set(COMMANDS 
     NoOperation Add
     LoadA Load1 Load2 Load3 Load4 Load5 Load6 LoadX
-    LoadANegative
+    LoadANegative Load1Negative Load2Negative Load3Negative Load4Negative Load5Negative Load6Negative LoadXNegative
     StoreA Store1 Store2 Store3 Store4 Store5 Store6 StoreX
     EnterA Enter1 Enter2 Enter3 Enter4 Enter5 Enter6 EnterX)
 

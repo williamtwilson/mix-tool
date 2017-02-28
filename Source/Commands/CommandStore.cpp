@@ -13,6 +13,13 @@ std::shared_ptr<Load6> CommandStore::load6 = std::make_shared<Load6>();
 std::shared_ptr<LoadX> CommandStore::loadX = std::make_shared<LoadX>();
 
 std::shared_ptr<LoadANegative> CommandStore::loadANegative = std::make_shared<LoadANegative>();
+std::shared_ptr<Load1Negative> CommandStore::load1Negative = std::make_shared<Load1Negative>();
+std::shared_ptr<Load2Negative> CommandStore::load2Negative = std::make_shared<Load2Negative>();
+std::shared_ptr<Load3Negative> CommandStore::load3Negative = std::make_shared<Load3Negative>();
+std::shared_ptr<Load4Negative> CommandStore::load4Negative = std::make_shared<Load4Negative>();
+std::shared_ptr<Load5Negative> CommandStore::load5Negative = std::make_shared<Load5Negative>();
+std::shared_ptr<Load6Negative> CommandStore::load6Negative = std::make_shared<Load6Negative>();
+std::shared_ptr<LoadXNegative> CommandStore::loadXNegative = std::make_shared<LoadXNegative>();
 
 std::shared_ptr<StoreA> CommandStore::storeA = std::make_shared<StoreA>();
 std::shared_ptr<Store1> CommandStore::store1 = std::make_shared<Store1>();
@@ -77,6 +84,34 @@ std::shared_ptr<Command> CommandStore::lookupCommandByCode(unsigned short code, 
 
         case 16:
             return loadANegative;
+            break;
+
+        case 17:
+            return load1Negative;
+            break;
+
+        case 18:
+            return load2Negative;
+            break;
+
+        case 19:
+            return load3Negative;
+            break;
+
+        case 20:
+            return load4Negative;
+            break;
+
+        case 21:
+            return load5Negative;
+            break;
+
+        case 22:
+            return load6Negative;
+            break;
+
+        case 23:
+            return loadXNegative;
             break;
 
 

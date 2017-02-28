@@ -209,6 +209,71 @@ TEST_F(MachineTest, LoadX) {
 }
 
 
+TEST_F(MachineTest, LoadANegative) {
+    fillZero();
+    CommandStore::lookupCommandByCode(16, 0)->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
+    EXPECT_EQ(machine->rA->description(), "+ 5 4 3 2 1");
+    EXPECT_EQ(machine->totalCycles(), 6);
+    EXPECT_EQ(machine->currentCommandAddress(), 4);
+}
+
+TEST_F(MachineTest, Load1Negative) {
+    fillZero();
+    CommandStore::lookupCommandByCode(17, 0)->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
+    EXPECT_EQ(machine->rI1->description(), "+ 5 4 3 2 1");
+    EXPECT_EQ(machine->totalCycles(), 6);
+    EXPECT_EQ(machine->currentCommandAddress(), 4);
+}
+
+TEST_F(MachineTest, Load2Negative) {
+    fillZero();
+    CommandStore::lookupCommandByCode(18, 0)->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
+    EXPECT_EQ(machine->rI2->description(), "+ 5 4 3 2 1");
+    EXPECT_EQ(machine->totalCycles(), 6);
+    EXPECT_EQ(machine->currentCommandAddress(), 4);
+}
+
+TEST_F(MachineTest, Load3Negative) {
+    fillZero();
+    CommandStore::lookupCommandByCode(19, 0)->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
+    EXPECT_EQ(machine->rI3->description(), "+ 5 4 3 2 1");
+    EXPECT_EQ(machine->totalCycles(), 6);
+    EXPECT_EQ(machine->currentCommandAddress(), 4);
+}
+
+TEST_F(MachineTest, Load4Negative) {
+    fillZero();
+    CommandStore::lookupCommandByCode(20, 0)->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
+    EXPECT_EQ(machine->rI4->description(), "+ 5 4 3 2 1");
+    EXPECT_EQ(machine->totalCycles(), 6);
+    EXPECT_EQ(machine->currentCommandAddress(), 4);
+}
+
+TEST_F(MachineTest, Load5Negative) {
+    fillZero();
+    CommandStore::lookupCommandByCode(21, 0)->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
+    EXPECT_EQ(machine->rI5->description(), "+ 5 4 3 2 1");
+    EXPECT_EQ(machine->totalCycles(), 6);
+    EXPECT_EQ(machine->currentCommandAddress(), 4);
+}
+
+TEST_F(MachineTest, Load6Negative) {
+    fillZero();
+    CommandStore::lookupCommandByCode(22, 0)->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
+    EXPECT_EQ(machine->rI6->description(), "+ 5 4 3 2 1");
+    EXPECT_EQ(machine->totalCycles(), 6);
+    EXPECT_EQ(machine->currentCommandAddress(), 4);
+}
+
+TEST_F(MachineTest, LoadXNegative) {
+    fillZero();
+    CommandStore::lookupCommandByCode(23, 0)->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
+    EXPECT_EQ(machine->rX->description(), "+ 5 4 3 2 1");
+    EXPECT_EQ(machine->totalCycles(), 6);
+    EXPECT_EQ(machine->currentCommandAddress(), 4);
+}
+
+
 TEST_F(MachineTest, StoreA) {
     CommandStore::enterA->execute(machine, negativeOneThroughFive, 0, 2);
     CommandStore::lookupCommandByCode(24, 0)->execute(machine, 0000, 0, Command::fieldForIndexes(0, 5));
