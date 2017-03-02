@@ -108,11 +108,19 @@ add_library(StoreX StoreX.cpp)
 target_link_libraries(StoreX Command)
 
 
+add_library(StoreJ StoreJ.cpp)
+target_link_libraries(StoreJ Command)
+
+add_library(StoreZero StoreZero.cpp)
+target_link_libraries(StoreZero Command)
+
+
 set(COMMANDS 
     NoOperation Add
     LoadA Load1 Load2 Load3 Load4 Load5 Load6 LoadX
     LoadANegative Load1Negative Load2Negative Load3Negative Load4Negative Load5Negative Load6Negative LoadXNegative
     StoreA Store1 Store2 Store3 Store4 Store5 Store6 StoreX
+    StoreJ StoreZero
     EnterA Enter1 Enter2 Enter3 Enter4 Enter5 Enter6 EnterX)
 
 add_library(CommandStore CommandStore.cpp)

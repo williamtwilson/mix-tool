@@ -338,3 +338,20 @@ TEST_F(MachineTest, StoreX) {
     EXPECT_EQ(machine->currentCommandAddress(), 2);
 }
 
+
+TEST_F(MachineTest, StoreJ) {
+    machine->rJ->load(std::make_shared<Word>(negativeOneThroughFive));
+    CommandStore::lookupCommandByCode(32, 0)->execute(machine, 0001, 0, Command::fieldForIndexes(1, 3));
+    EXPECT_EQ(machine->memory->at(0001)->description(), "+ 3 2 1 0 0");
+    EXPECT_EQ(machine->totalCycles(), 2);
+    EXPECT_EQ(machine->currentCommandAddress(), 1);
+}
+
+TEST_F(MachineTest, StoreZero) {
+    fillZero();
+    CommandStore::lookupCommandByCode(33, 0)->execute(machine, 0000, 0, Command::fieldForIndexes(1, 3));
+    EXPECT_EQ(machine->memory->at(0000)->description(), "- 0 0 0 2 1");
+    EXPECT_EQ(machine->totalCycles(), 6);
+    EXPECT_EQ(machine->currentCommandAddress(), 4);
+}
+

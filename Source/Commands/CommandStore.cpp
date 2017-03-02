@@ -30,6 +30,9 @@ std::shared_ptr<Store5> CommandStore::store5 = std::make_shared<Store5>();
 std::shared_ptr<Store6> CommandStore::store6 = std::make_shared<Store6>();
 std::shared_ptr<StoreX> CommandStore::storeX = std::make_shared<StoreX>();
 
+std::shared_ptr<StoreJ> CommandStore::storeJ = std::make_shared<StoreJ>();
+std::shared_ptr<StoreZero> CommandStore::storeZero = std::make_shared<StoreZero>();
+
 std::shared_ptr<EnterA> CommandStore::enterA = std::make_shared<EnterA>();
 std::shared_ptr<Enter1> CommandStore::enter1 = std::make_shared<Enter1>();
 std::shared_ptr<Enter2> CommandStore::enter2 = std::make_shared<Enter2>();
@@ -145,6 +148,15 @@ std::shared_ptr<Command> CommandStore::lookupCommandByCode(unsigned short code, 
 
         case 31:
             return storeX;
+            break;
+
+
+        case 32:
+            return storeJ;
+            break;
+
+        case 33:
+            return storeZero;
             break;
 
 

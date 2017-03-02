@@ -4,7 +4,7 @@ Command::Command(std::string n, unsigned short c): code(c), name(std::make_share
 
 unsigned long Command::adjustedAddress(std::shared_ptr<Machine> machine, unsigned long address, unsigned short index) {
     if (index > 0 && index < 7) {
-        std::shared_ptr<Register> rI(machine->lookupRegister(index));
+        std::shared_ptr<Register> rI = machine->lookupRegister(index);
         return rI->contentsToLong() + address;
     }
 
@@ -12,7 +12,7 @@ unsigned long Command::adjustedAddress(std::shared_ptr<Machine> machine, unsigne
 }
 
 void Command::enter(std::shared_ptr<Machine> machine, std::shared_ptr<Register> r, unsigned long address) {
-    std::shared_ptr<Word> w(std::make_shared<Word>(address));
+    std::shared_ptr<Word> w = std::make_shared<Word>(address);
     r->load(w);
     machine->incrementCycles(1);
     machine->incrementCommandPointer();
@@ -41,7 +41,7 @@ void Command::load(std::shared_ptr<Machine> machine, std::shared_ptr<Register> r
     if (address <= 4000) {
         std::shared_ptr<Word> m = machine->lookupMemoryCell(address);
 
-        std::shared_ptr<Word> tmp(std::make_shared<Word>());
+        std::shared_ptr<Word> tmp = std::make_shared<Word>();
 
         if (f == 0) {
             tmp->setSign(m->sign());
@@ -65,7 +65,7 @@ void Command::loadNegative(std::shared_ptr<Machine> machine, std::shared_ptr<Reg
     if (address <= 4000) {
         std::shared_ptr<Word> m = machine->lookupMemoryCell(address);
 
-        std::shared_ptr<Word> tmp(std::make_shared<Word>());
+        std::shared_ptr<Word> tmp = std::make_shared<Word>();
 
         if (f == 0) {
             if (m->sign() == Sign::positive) {
