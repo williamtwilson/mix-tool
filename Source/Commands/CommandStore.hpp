@@ -45,6 +45,7 @@
 #include "StoreJ.hpp"
 #include "StoreZero.hpp"
 #include "Jump.hpp"
+#include "JumpSaveJ.hpp"
 
 namespace CommandStore {
     extern std::shared_ptr<NoOperation> noOperation;
@@ -80,6 +81,7 @@ namespace CommandStore {
     extern std::shared_ptr<StoreJ> storeJ;
     extern std::shared_ptr<StoreZero> storeZero;
     extern std::shared_ptr<Jump> jump;
+    extern std::shared_ptr<JumpSaveJ> jumpSaveJ;
 
     extern std::shared_ptr<EnterA> enterA;
     extern std::shared_ptr<Enter1> enter1;
