@@ -62,3 +62,14 @@ TEST_F(RuntimeTest, Enters) {
     EXPECT_EQ(runtime->machine->currentCommandAddress(), 8);
 }
 
+TEST_F(RuntimeTest, Jumps) {
+    runtime->machine->memory->setAt(0, std::make_shared<Word>(Sign::positive, 0, 10, 0, 0, 39));
+    runtime->machine->memory->setAt(10, std::make_shared<Word>(Sign::positive, 1, 2, 0, 2, 48));
+    runtime->executeNextCommand();
+    runtime->executeNextCommand();
+    EXPECT_EQ(runtime->machine->rJ->description(), "+ 0 0 0 0 1");
+    EXPECT_EQ(runtime->machine->rA->description(), "+ 0 0 0 1 2");
+    EXPECT_EQ(runtime->machine->totalCycles(), 2);
+    EXPECT_EQ(runtime->machine->currentCommandAddress(), 11);
+}
+
