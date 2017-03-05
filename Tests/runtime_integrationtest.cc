@@ -82,5 +82,25 @@ TEST_F(RuntimeTest, Jumps) {
     EXPECT_EQ(runtime->machine->rA->description(), "+ 0 0 0 3 4");
     EXPECT_EQ(runtime->machine->totalCycles(), 4);
     EXPECT_EQ(runtime->machine->currentCommandAddress(), 21);
+
+    runtime->machine->memory->setAt(21, std::make_shared<Word>(Sign::positive, 0, 30, 0, 2, 39));
+    runtime->executeNextCommand();
+
+    EXPECT_EQ(runtime->machine->rJ->description(), "+ 0 0 0 0 1");
+    EXPECT_EQ(runtime->machine->rA->description(), "+ 0 0 0 3 4");
+    EXPECT_EQ(runtime->machine->totalCycles(), 5);
+    EXPECT_EQ(runtime->machine->currentCommandAddress(), 22);
+
+    runtime->machine->overflowToggle = Overflow::on;
+    runtime->machine->memory->setAt(22, std::make_shared<Word>(Sign::positive, 0, 30, 0, 2, 39));
+    runtime->machine->memory->setAt(30, std::make_shared<Word>(Sign::positive, 5, 6, 0, 2, 48));
+    runtime->executeNextCommand();
+    runtime->executeNextCommand();
+
+    EXPECT_EQ(runtime->machine->overflowToggle, Overflow::off);
+    EXPECT_EQ(runtime->machine->rJ->description(), "+ 0 0 0 0 23");
+    EXPECT_EQ(runtime->machine->rA->description(), "+ 0 0 0 5 6");
+    EXPECT_EQ(runtime->machine->totalCycles(), 7);
+    EXPECT_EQ(runtime->machine->currentCommandAddress(), 31);
 }
 
