@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../headers.hpp"
+#include "headers.hpp"
 
 class MachineTest: public testing::Test {
     protected:

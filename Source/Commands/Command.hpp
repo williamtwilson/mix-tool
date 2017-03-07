@@ -1,7 +1,7 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 
-#include "../Machine.hpp"
+#include "Source/Machine.hpp"
 #include <string>
 #include <memory>
 
