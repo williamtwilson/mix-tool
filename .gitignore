@@ -5,6 +5,9 @@ CMakeScripts
 Makefile
 cmake_install.cmake
 install_manifest.txt
+# Emacs
+*~
+*#
 # Binary
 mix
 mix_debug
