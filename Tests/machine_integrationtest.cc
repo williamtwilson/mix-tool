@@ -87,6 +87,16 @@ TEST_F(MachineTest, EnterA) {
     EXPECT_EQ(machine->currentCommandAddress(), 1);
 }
 
+TEST_F(MachineTest, IncrementA) {
+    CommandStore::lookupCommandByCode(48, 2)->execute(machine, oneThroughFive, 0, 2);
+    EXPECT_EQ(machine->rA->contentsToLong(), oneThroughFive);
+    CommandStore::lookupCommandByCode(48, 0)->execute(machine, 10, 0, 2);
+    EXPECT_EQ(machine->rA->contentsToLong(), oneThroughFive + 10);
+    EXPECT_EQ(machine->rA->description(), "+ 5 4 3 2 11");
+    EXPECT_EQ(machine->totalCycles(), 2);
+    EXPECT_EQ(machine->currentCommandAddress(), 2);
+}
+
 TEST_F(MachineTest, Enter1) {
     CommandStore::lookupCommandByCode(49, 2)->execute(machine, oneThroughFive, 0, 2);
     EXPECT_EQ(machine->rI1->contentsToLong(), oneThroughFive);

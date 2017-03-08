@@ -10,7 +10,7 @@ void Add::executeAdjusted(std::shared_ptr<Machine> machine, unsigned long addres
     if (address <= 4000) {
         std::shared_ptr<Word> memoryCell = machine->memory->at(address);
 
-        std::shared_ptr<Word> tmp(std::make_shared<Word>());
+        std::shared_ptr<Word> tmp = std::make_shared<Word>();
 
         if (f == 0) {
             tmp->setSign(memoryCell->sign());
