@@ -8,6 +8,7 @@ install_manifest.txt
 # Emacs
 *~
 *#
+.dir-local.el
 # Binary
 mix
 mix_debug

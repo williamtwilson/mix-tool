@@ -9,6 +9,7 @@
 #include "EnterA.hpp"
 #include "IncrementA.hpp"
 #include "Enter1.hpp"
+#include "Increment1.hpp"
 #include "Enter2.hpp"
 #include "Enter3.hpp"
 #include "Enter4.hpp"
@@ -91,6 +92,7 @@ namespace CommandStore {
     extern std::shared_ptr<EnterA> enterA;
     extern std::shared_ptr<IncrementA> incrementA;
     extern std::shared_ptr<Enter1> enter1;
+    extern std::shared_ptr<Increment1> increment1;
     extern std::shared_ptr<Enter2> enter2;
     extern std::shared_ptr<Enter3> enter3;
     extern std::shared_ptr<Enter4> enter4;

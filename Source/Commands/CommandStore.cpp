@@ -40,6 +40,7 @@ std::shared_ptr<JumpOnNoOverflow> CommandStore::jumpOnNoOverflow = std::make_sha
 std::shared_ptr<EnterA> CommandStore::enterA = std::make_shared<EnterA>();
 std::shared_ptr<IncrementA> CommandStore::incrementA = std::make_shared<IncrementA>();
 std::shared_ptr<Enter1> CommandStore::enter1 = std::make_shared<Enter1>();
+std::shared_ptr<Increment1> CommandStore::increment1 = std::make_shared<Increment1>();
 std::shared_ptr<Enter2> CommandStore::enter2 = std::make_shared<Enter2>();
 std::shared_ptr<Enter3> CommandStore::enter3 = std::make_shared<Enter3>();
 std::shared_ptr<Enter4> CommandStore::enter4 = std::make_shared<Enter4>();
@@ -196,6 +197,8 @@ std::shared_ptr<Command> CommandStore::lookupCommandByCode(unsigned short code, 
 
         case 49:
             switch (field) {
+	        case 0:
+	            return increment1;
                 case 2:
                     return enter1;
                     break;
