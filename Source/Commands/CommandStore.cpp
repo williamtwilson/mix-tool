@@ -42,215 +42,239 @@ std::shared_ptr<IncrementA> CommandStore::incrementA = std::make_shared<Incremen
 std::shared_ptr<Enter1> CommandStore::enter1 = std::make_shared<Enter1>();
 std::shared_ptr<Increment1> CommandStore::increment1 = std::make_shared<Increment1>();
 std::shared_ptr<Enter2> CommandStore::enter2 = std::make_shared<Enter2>();
+std::shared_ptr<Increment2> CommandStore::increment2 = std::make_shared<Increment2>();
 std::shared_ptr<Enter3> CommandStore::enter3 = std::make_shared<Enter3>();
+std::shared_ptr<Increment3> CommandStore::increment3 = std::make_shared<Increment3>();
 std::shared_ptr<Enter4> CommandStore::enter4 = std::make_shared<Enter4>();
+std::shared_ptr<Increment4> CommandStore::increment4 = std::make_shared<Increment4>();
 std::shared_ptr<Enter5> CommandStore::enter5 = std::make_shared<Enter5>();
+std::shared_ptr<Increment5> CommandStore::increment5 = std::make_shared<Increment5>();
 std::shared_ptr<Enter6> CommandStore::enter6 = std::make_shared<Enter6>();
+std::shared_ptr<Increment6> CommandStore::increment6 = std::make_shared<Increment6>();
 std::shared_ptr<EnterX> CommandStore::enterX = std::make_shared<EnterX>();
+std::shared_ptr<IncrementX> CommandStore::incrementX = std::make_shared<IncrementX>();
 
 std::shared_ptr<Command> CommandStore::lookupCommandByCode(unsigned short code, unsigned short field) {
     switch (code) {
-        case 0:
-            return noOperation;
-            break;
+    case 0:
+	return noOperation;
+	break;
 
-        case 1:
-            return add;
-            break;
+    case 1:
+	return add;
+	break;
 
-        case 8:
-            return loadA;
-            break;
+    case 8:
+	return loadA;
+	break;
 
-        case 9:
-            return load1;
-            break;
+    case 9:
+	return load1;
+	break;
 
-        case 10:
-            return load2;
-            break;
+    case 10:
+	return load2;
+	break;
 
-        case 11:
-            return load3;
-            break;
+    case 11:
+	return load3;
+	break;
 
-        case 12:
-            return load4;
-            break;
+    case 12:
+	return load4;
+	break;
 
-        case 13:
-            return load5;
-            break;
+    case 13:
+	return load5;
+	break;
 
-        case 14:
-            return load6;
-            break;
+    case 14:
+	return load6;
+	break;
 
-        case 15:
-            return loadX;
-            break;
-
-
-        case 16:
-            return loadANegative;
-            break;
-
-        case 17:
-            return load1Negative;
-            break;
-
-        case 18:
-            return load2Negative;
-            break;
-
-        case 19:
-            return load3Negative;
-            break;
-
-        case 20:
-            return load4Negative;
-            break;
-
-        case 21:
-            return load5Negative;
-            break;
-
-        case 22:
-            return load6Negative;
-            break;
-
-        case 23:
-            return loadXNegative;
-            break;
+    case 15:
+	return loadX;
+	break;
 
 
-        case 24:
-            return storeA;
-            break;
+    case 16:
+	return loadANegative;
+	break;
 
-        case 25:
-            return store1;
-            break;
+    case 17:
+	return load1Negative;
+	break;
 
-        case 26:
-            return store2;
-            break;
+    case 18:
+	return load2Negative;
+	break;
 
-        case 27:
-            return store3;
-            break;
+    case 19:
+	return load3Negative;
+	break;
 
-        case 28:
-            return store4;
-            break;
+    case 20:
+	return load4Negative;
+	break;
 
-        case 29:
-            return store5;
-            break;
+    case 21:
+	return load5Negative;
+	break;
 
-        case 30:
-            return store6;
-            break;
+    case 22:
+	return load6Negative;
+	break;
 
-        case 31:
-            return storeX;
-            break;
-
-
-        case 32:
-            return storeJ;
-            break;
-
-        case 33:
-            return storeZero;
-            break;
-
-        case 39:
-            switch (field) {
-                case 0:
-                    return jump;
-                    break;
-                case 1:
-                    return jumpSaveJ;
-                    break;
-                case 2:
-                    return jumpOnOverflow;
-                    break;
-                case 3:
-                    return jumpOnNoOverflow;
-                    break;
-            }
-            break;
+    case 23:
+	return loadXNegative;
+	break;
 
 
-        case 48:
-            switch (field) {
-	        case 0:
-		    return incrementA;
-      	            break;
+    case 24:
+	return storeA;
+	break;
+
+    case 25:
+	return store1;
+	break;
+
+    case 26:
+	return store2;
+	break;
+
+    case 27:
+	return store3;
+	break;
+
+    case 28:
+	return store4;
+	break;
+
+    case 29:
+	return store5;
+	break;
+
+    case 30:
+	return store6;
+	break;
+
+    case 31:
+	return storeX;
+	break;
+
+
+    case 32:
+	return storeJ;
+	break;
+
+    case 33:
+	return storeZero;
+	break;
+
+    case 39:
+	switch (field) {
+	case 0:
+	    return jump;
+	    break;
+	case 1:
+	    return jumpSaveJ;
+	    break;
+	case 2:
+	    return jumpOnOverflow;
+	    break;
+	case 3:
+	    return jumpOnNoOverflow;
+	    break;
+	}
+	break;
+
+
+    case 48:
+	switch (field) {
+	case 0:
+	    return incrementA;
+	    break;
 	      
-                case 2:
-                    return enterA;
-                    break;
-            }
-            break;
+	case 2:
+	    return enterA;
+	    break;
+	}
+	break;
 
-        case 49:
-            switch (field) {
-	        case 0:
-	            return increment1;
-                case 2:
-                    return enter1;
-                    break;
-            }
-            break;
+    case 49:
+	switch (field) {
+	case 0:
+	    return increment1;
+	case 2:
+	    return enter1;
+	    break;
+	}
+	break;
 
-        case 50:
-            switch (field) {
-                case 2:
-                    return enter2;
-                    break;
-            }
-            break;
+    case 50:
+	switch (field) {
+	case 0:
+	    return increment2;
+	    break;
+	case 2:
+	    return enter2;
+	    break;
+	}
+	break;
 
-        case 51:
-            switch (field) {
-                case 2:
-                    return enter3;
-                    break;
-            }
-            break;
+    case 51:
+	switch (field) {
+	case 0:
+	    return increment3;
+	    break;
+	case 2:
+	    return enter3;
+	    break;
+	}
+	break;
 
-        case 52:
-            switch (field) {
-                case 2:
-                    return enter4;
-                    break;
-            }
-            break;
+    case 52:
+	switch (field) {
+	case 0:
+	    return increment4;
+	    break;
+	case 2:
+	    return enter4;
+	    break;
+	}
+	break;
 
-        case 53:
-            switch (field) {
-                case 2:
-                    return enter5;
-                    break;
-            }
-            break;
+    case 53:
+	switch (field) {
+	case 0:
+	    return increment5;
+	    break;
+	case 2:
+	    return enter5;
+	    break;
+	}
+	break;
 
-        case 54:
-            switch (field) {
-                case 2:
-                    return enter6;
-                    break;
-            }
-            break;
+    case 54:
+	switch (field) {
+	case 0:
+	    return increment6;
+	    break;
+	case 2:
+	    return enter6;
+	    break;
+	}
+	break;
 
-        case 55:
-            switch (field) {
-                case 2:
-                    return enterX;
-                    break;
-            }
+    case 55:
+	switch (field) {
+	case 0:
+	    return incrementX;
+	    break;
+	case 2:
+	    return enterX;
+	    break;
+	}
             break;
     }
     return noOperation;

@@ -139,12 +139,48 @@ TEST_F(MachineTest, Enter2) {
     EXPECT_EQ(machine->currentCommandAddress(), 1);
 }
 
+TEST_F(MachineTest, Increment2) {
+    CommandStore::lookupCommandByCode(50, 2)->execute(machine, oneThroughFive, 0, 2);
+    EXPECT_EQ(machine->rI2->contentsToLong(), oneThroughFive);
+    CommandStore::lookupCommandByCode(50, 0)->execute(machine, 10, 0, 0);
+    EXPECT_EQ(machine->rI2->contentsToLong(), oneThroughFive + 10);
+    EXPECT_EQ(machine->rI2->description(), "+ 5 4 3 2 11");
+    EXPECT_EQ(machine->overflowToggle, Overflow::off);
+    EXPECT_EQ(machine->totalCycles(), 2);
+    EXPECT_EQ(machine->currentCommandAddress(), 2);
+
+    CommandStore::enter2->execute(machine, 63 * fifthByte + 63 * fourthByte + 63 * thirdByte + 63 * secondByte + 63, 0, 2);
+    CommandStore::lookupCommandByCode(50, 0)->execute(machine, 10, 0, 0);
+    EXPECT_EQ(machine->overflowToggle, Overflow::on);
+    EXPECT_EQ(machine->rI2->description(), "+ 0 0 0 0 9");
+    EXPECT_EQ(machine->totalCycles(), 4);
+    EXPECT_EQ(machine->currentCommandAddress(), 4);
+}
+
 TEST_F(MachineTest, Enter3) {
     CommandStore::lookupCommandByCode(51, 2)->execute(machine, oneThroughFive, 0, 2);
     EXPECT_EQ(machine->rI3->contentsToLong(), oneThroughFive);
     EXPECT_EQ(machine->rI3->description(), "+ 5 4 3 2 1");
     EXPECT_EQ(machine->totalCycles(), 1);
     EXPECT_EQ(machine->currentCommandAddress(), 1);
+}
+
+TEST_F(MachineTest, Increment3) {
+    CommandStore::lookupCommandByCode(51, 2)->execute(machine, oneThroughFive, 0, 2);
+    EXPECT_EQ(machine->rI3->contentsToLong(), oneThroughFive);
+    CommandStore::lookupCommandByCode(51, 0)->execute(machine, 10, 0, 0);
+    EXPECT_EQ(machine->rI3->contentsToLong(), oneThroughFive + 10);
+    EXPECT_EQ(machine->rI3->description(), "+ 5 4 3 2 11");
+    EXPECT_EQ(machine->overflowToggle, Overflow::off);
+    EXPECT_EQ(machine->totalCycles(), 2);
+    EXPECT_EQ(machine->currentCommandAddress(), 2);
+
+    CommandStore::enter3->execute(machine, 63 * fifthByte + 63 * fourthByte + 63 * thirdByte + 63 * secondByte + 63, 0, 3);
+    CommandStore::lookupCommandByCode(51, 0)->execute(machine, 10, 0, 0);
+    EXPECT_EQ(machine->overflowToggle, Overflow::on);
+    EXPECT_EQ(machine->rI3->description(), "+ 0 0 0 0 9");
+    EXPECT_EQ(machine->totalCycles(), 4);
+    EXPECT_EQ(machine->currentCommandAddress(), 4);
 }
 
 TEST_F(MachineTest, Enter4) {
@@ -155,12 +191,48 @@ TEST_F(MachineTest, Enter4) {
     EXPECT_EQ(machine->currentCommandAddress(), 1);
 }
 
+TEST_F(MachineTest, Increment4) {
+    CommandStore::lookupCommandByCode(52, 2)->execute(machine, oneThroughFive, 0, 2);
+    EXPECT_EQ(machine->rI4->contentsToLong(), oneThroughFive);
+    CommandStore::lookupCommandByCode(52, 0)->execute(machine, 10, 0, 0);
+    EXPECT_EQ(machine->rI4->contentsToLong(), oneThroughFive + 10);
+    EXPECT_EQ(machine->rI4->description(), "+ 5 4 3 2 11");
+    EXPECT_EQ(machine->overflowToggle, Overflow::off);
+    EXPECT_EQ(machine->totalCycles(), 2);
+    EXPECT_EQ(machine->currentCommandAddress(), 2);
+
+    CommandStore::enter4->execute(machine, 63 * fifthByte + 63 * fourthByte + 63 * thirdByte + 63 * secondByte + 63, 0, 3);
+    CommandStore::lookupCommandByCode(52, 0)->execute(machine, 10, 0, 0);
+    EXPECT_EQ(machine->overflowToggle, Overflow::on);
+    EXPECT_EQ(machine->rI4->description(), "+ 0 0 0 0 9");
+    EXPECT_EQ(machine->totalCycles(), 4);
+    EXPECT_EQ(machine->currentCommandAddress(), 4);
+}
+
 TEST_F(MachineTest, Enter5) {
     CommandStore::lookupCommandByCode(53, 2)->execute(machine, oneThroughFive, 0, 2);
     EXPECT_EQ(machine->rI5->contentsToLong(), oneThroughFive);
     EXPECT_EQ(machine->rI5->description(), "+ 5 4 3 2 1");
     EXPECT_EQ(machine->totalCycles(), 1);
     EXPECT_EQ(machine->currentCommandAddress(), 1);
+}
+
+TEST_F(MachineTest, Increment5) {
+    CommandStore::lookupCommandByCode(53, 2)->execute(machine, oneThroughFive, 0, 2);
+    EXPECT_EQ(machine->rI5->contentsToLong(), oneThroughFive);
+    CommandStore::lookupCommandByCode(53, 0)->execute(machine, 10, 0, 0);
+    EXPECT_EQ(machine->rI5->contentsToLong(), oneThroughFive + 10);
+    EXPECT_EQ(machine->rI5->description(), "+ 5 4 3 2 11");
+    EXPECT_EQ(machine->overflowToggle, Overflow::off);
+    EXPECT_EQ(machine->totalCycles(), 2);
+    EXPECT_EQ(machine->currentCommandAddress(), 2);
+
+    CommandStore::enter5->execute(machine, 63 * fifthByte + 63 * fourthByte + 63 * thirdByte + 63 * secondByte + 63, 0, 3);
+    CommandStore::lookupCommandByCode(53, 0)->execute(machine, 10, 0, 0);
+    EXPECT_EQ(machine->overflowToggle, Overflow::on);
+    EXPECT_EQ(machine->rI5->description(), "+ 0 0 0 0 9");
+    EXPECT_EQ(machine->totalCycles(), 4);
+    EXPECT_EQ(machine->currentCommandAddress(), 4);
 }
 
 TEST_F(MachineTest, Enter6) {
@@ -171,12 +243,48 @@ TEST_F(MachineTest, Enter6) {
     EXPECT_EQ(machine->currentCommandAddress(), 1);
 }
 
+TEST_F(MachineTest, Increment6) {
+    CommandStore::lookupCommandByCode(54, 2)->execute(machine, oneThroughFive, 0, 2);
+    EXPECT_EQ(machine->rI6->contentsToLong(), oneThroughFive);
+    CommandStore::lookupCommandByCode(54, 0)->execute(machine, 10, 0, 0);
+    EXPECT_EQ(machine->rI6->contentsToLong(), oneThroughFive + 10);
+    EXPECT_EQ(machine->rI6->description(), "+ 5 4 3 2 11");
+    EXPECT_EQ(machine->overflowToggle, Overflow::off);
+    EXPECT_EQ(machine->totalCycles(), 2);
+    EXPECT_EQ(machine->currentCommandAddress(), 2);
+
+    CommandStore::enter6->execute(machine, 63 * fifthByte + 63 * fourthByte + 63 * thirdByte + 63 * secondByte + 63, 0, 3);
+    CommandStore::lookupCommandByCode(54, 0)->execute(machine, 10, 0, 0);
+    EXPECT_EQ(machine->overflowToggle, Overflow::on);
+    EXPECT_EQ(machine->rI6->description(), "+ 0 0 0 0 9");
+    EXPECT_EQ(machine->totalCycles(), 4);
+    EXPECT_EQ(machine->currentCommandAddress(), 4);
+}
+
 TEST_F(MachineTest, EnterX) {
     CommandStore::lookupCommandByCode(55, 2)->execute(machine, oneThroughFive, 0, 2);
     EXPECT_EQ(machine->rX->contentsToLong(), oneThroughFive);
     EXPECT_EQ(machine->rX->description(), "+ 5 4 3 2 1");
     EXPECT_EQ(machine->totalCycles(), 1);
     EXPECT_EQ(machine->currentCommandAddress(), 1);
+}
+
+TEST_F(MachineTest, IncrementX) {
+    CommandStore::lookupCommandByCode(55, 2)->execute(machine, oneThroughFive, 0, 2);
+    EXPECT_EQ(machine->rX->contentsToLong(), oneThroughFive);
+    CommandStore::lookupCommandByCode(55, 0)->execute(machine, 10, 0, 0);
+    EXPECT_EQ(machine->rX->contentsToLong(), oneThroughFive + 10);
+    EXPECT_EQ(machine->rX->description(), "+ 5 4 3 2 11");
+    EXPECT_EQ(machine->overflowToggle, Overflow::off);
+    EXPECT_EQ(machine->totalCycles(), 2);
+    EXPECT_EQ(machine->currentCommandAddress(), 2);
+
+    CommandStore::enterX->execute(machine, 63 * fifthByte + 63 * fourthByte + 63 * thirdByte + 63 * secondByte + 63, 0, 3);
+    CommandStore::lookupCommandByCode(55, 0)->execute(machine, 10, 0, 0);
+    EXPECT_EQ(machine->overflowToggle, Overflow::on);
+    EXPECT_EQ(machine->rX->description(), "+ 0 0 0 0 9");
+    EXPECT_EQ(machine->totalCycles(), 4);
+    EXPECT_EQ(machine->currentCommandAddress(), 4);
 }
 
 
