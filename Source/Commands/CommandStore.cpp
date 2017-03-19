@@ -54,6 +54,8 @@ std::shared_ptr<Increment6> CommandStore::increment6 = std::make_shared<Incremen
 std::shared_ptr<EnterX> CommandStore::enterX = std::make_shared<EnterX>();
 std::shared_ptr<IncrementX> CommandStore::incrementX = std::make_shared<IncrementX>();
 
+std::shared_ptr<CompareA> CommandStore::compareA = std::make_shared<CompareA>();
+
 std::shared_ptr<Command> CommandStore::lookupCommandByCode(unsigned short code, unsigned short field) {
     switch (code) {
     case 0:

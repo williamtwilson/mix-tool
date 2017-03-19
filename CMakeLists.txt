@@ -26,7 +26,8 @@ set(SOURCES
     LoadANegative Load1Negative Load2Negative Load3Negative Load4Negative Load5Negative Load6Negative LoadXNegative
     StoreA Store1 Store2 Store3 Store4 Store5 Store6 StoreX
     StoreJ StoreZero Jump JumpSaveJ JumpOnOverflow JumpOnNoOverflow
-    EnterA IncrementA Enter1 Increment1 Enter2 Increment2 Enter3 Increment3 Enter4 Increment4 Enter5 Increment5 Enter6 Increment6 EnterX IncrementX)
+    EnterA IncrementA Enter1 Increment1 Enter2 Increment2 Enter3 Increment3 Enter4 Increment4 Enter5 Increment5 Enter6 Increment6 EnterX IncrementX
+    CompareA)
 
 add_executable(mix main.cpp)
 target_link_libraries(mix ${SOURCES})

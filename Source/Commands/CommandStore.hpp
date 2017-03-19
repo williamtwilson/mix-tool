@@ -57,6 +57,8 @@
 #include "JumpOnOverflow.hpp"
 #include "JumpOnNoOverflow.hpp"
 
+#include "CompareA.hpp"
+
 namespace CommandStore {
     extern std::shared_ptr<NoOperation> noOperation;
     extern std::shared_ptr<Add> add;
@@ -111,6 +113,8 @@ namespace CommandStore {
     extern std::shared_ptr<Increment6> increment6;
     extern std::shared_ptr<EnterX> enterX;
     extern std::shared_ptr<IncrementX> incrementX;
+
+    extern std::shared_ptr<CompareA> compareA;
 
     extern std::shared_ptr<Command> lookupCommandByCode(unsigned short code, unsigned short field);
 }
