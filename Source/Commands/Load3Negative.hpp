@@ -4,11 +4,11 @@
 #include "Command.hpp"
 
 class Load3Negative: public Command {
-    public:
-        Load3Negative();
+public:
+    Load3Negative();
 
-    protected:
-        void executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field) override;
+protected:
+    void executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field) override;
 };
 
 #endif

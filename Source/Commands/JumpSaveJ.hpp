@@ -4,11 +4,11 @@
 #include "Command.hpp"
 
 class JumpSaveJ: public Command {
-    public:
-        JumpSaveJ();
+public:
+    JumpSaveJ();
 
-    protected:
-        void executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field);
+protected:
+    void executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field);
 };
 
 #endif

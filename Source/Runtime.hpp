@@ -4,13 +4,13 @@
 #include "Commands/CommandStore.hpp"
 
 class Runtime {
-    public:
-        std::shared_ptr<Machine> machine;
+public:
+    std::shared_ptr<Machine> machine;
 
-        Runtime();
+    Runtime();
 
-        void executeNextCommand();
-        void executeWord(std::shared_ptr<Word>);
+    void executeNextCommand();
+    void executeWord(std::shared_ptr<Word>);
 };
 
 #endif

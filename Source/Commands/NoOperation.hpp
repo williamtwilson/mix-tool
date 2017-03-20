@@ -4,11 +4,11 @@
 #include "Command.hpp"
 
 class NoOperation: public Command {
-    public:
-        NoOperation();
+public:
+    NoOperation();
 
-    protected:
-        void executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field) override;
+protected:
+    void executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field) override;
 };
 
 #endif

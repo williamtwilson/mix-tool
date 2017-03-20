@@ -4,11 +4,11 @@
 #include "Command.hpp"
 
 class Enter2: public Command {
-    public:
-        Enter2();
+public:
+    Enter2();
 
-    protected:
-        void executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field) override;
+protected:
+    void executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field) override;
 };
 
 #endif

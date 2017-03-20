@@ -277,7 +277,7 @@ std::shared_ptr<Command> CommandStore::lookupCommandByCode(unsigned short code, 
 	    return enterX;
 	    break;
 	}
-            break;
+	break;
     }
     return noOperation;
 }

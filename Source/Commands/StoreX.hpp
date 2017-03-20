@@ -4,11 +4,11 @@
 #include "Command.hpp"
 
 class StoreX: public Command {
-    public:
-        StoreX();
+public:
+    StoreX();
 
-    protected:
-        void executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field) override;
+protected:
+    void executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field) override;
 };
 
 #endif

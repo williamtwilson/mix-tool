@@ -4,11 +4,11 @@
 #include "Command.hpp"
 
 class Increment2: public Command {
-    public:
-        Increment2();
+public:
+    Increment2();
 
-    protected:
-        void executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field) override;
+protected:
+    void executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field) override;
 };
 
 #endif
