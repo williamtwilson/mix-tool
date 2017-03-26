@@ -502,7 +502,7 @@ TEST_F(MachineTest, StoreZero) {
 TEST_F(MachineTest, CompareA) {
      machine->memory->setAt(0, std::make_shared<Word>(1000));
      CommandStore::enterA->execute(machine, 1001, 0, 2);
-     CommandStore::compareA->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     CommandStore::lookupCommandByCode(56, Command::fieldForIndexes(0,5))->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
      EXPECT_EQ(machine->comparisonIndicator, Comparison::greater);
      EXPECT_EQ(machine->totalCycles(), 3);
      EXPECT_EQ(machine->currentCommandAddress(), 2);
@@ -510,14 +510,10 @@ TEST_F(MachineTest, CompareA) {
      CommandStore::enterA->execute(machine, 999, 0, 2);
      CommandStore::compareA->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
      EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
-     EXPECT_EQ(machine->totalCycles(), 6);
-     EXPECT_EQ(machine->currentCommandAddress(), 4);
 
      CommandStore::enterA->execute(machine, 1000, 0, 2);
      CommandStore::compareA->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
      EXPECT_EQ(machine->comparisonIndicator, Comparison::equal);
-     EXPECT_EQ(machine->totalCycles(), 9);
-     EXPECT_EQ(machine->currentCommandAddress(), 6);
 
      machine->memory->setAt(0, std::make_shared<Word>(4034)); // 64 * 63 + 2
      CommandStore::enterA->execute(machine, 5, 0, 2);
@@ -525,6 +521,212 @@ TEST_F(MachineTest, CompareA) {
      EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
      CommandStore::compareA->execute(machine, 0, 0, Command::fieldForIndexes(5, 5));
      EXPECT_EQ(machine->comparisonIndicator, Comparison::greater);
-     EXPECT_EQ(machine->totalCycles(), 14);
-     EXPECT_EQ(machine->currentCommandAddress(), 9);
+
+     machine->memory->setAt(0, std::make_shared<Word>(0));
+     CommandStore::enterA->execute(machine, -63, 0, 0);
+     CommandStore::compareA->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
+}
+
+TEST_F(MachineTest, Compare1) {
+     machine->memory->setAt(0, std::make_shared<Word>(1000));
+     CommandStore::enter1->execute(machine, 1001, 0, 2);
+     CommandStore::lookupCommandByCode(57, Command::fieldForIndexes(0,5))->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::greater);
+     EXPECT_EQ(machine->totalCycles(), 3);
+     EXPECT_EQ(machine->currentCommandAddress(), 2);
+
+     CommandStore::enter1->execute(machine, 999, 0, 2);
+     CommandStore::compare1->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
+
+     CommandStore::enter1->execute(machine, 1000, 0, 2);
+     CommandStore::compare1->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::equal);
+
+     machine->memory->setAt(0, std::make_shared<Word>(4034)); // 64 * 63 + 2
+     CommandStore::enter1->execute(machine, 5, 0, 2);
+     CommandStore::compare1->execute(machine, 0, 0, Command::fieldForIndexes(4, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
+     CommandStore::compare1->execute(machine, 0, 0, Command::fieldForIndexes(5, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::greater);
+
+     machine->memory->setAt(0, std::make_shared<Word>(0));
+     CommandStore::enter1->execute(machine, -63, 0, 0);
+     CommandStore::compare1->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
+}
+
+TEST_F(MachineTest, Compare2) {
+     machine->memory->setAt(0, std::make_shared<Word>(1000));
+     CommandStore::enter2->execute(machine, 1001, 0, 2);
+     CommandStore::lookupCommandByCode(58, Command::fieldForIndexes(0,5))->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::greater);
+     EXPECT_EQ(machine->totalCycles(), 3);
+     EXPECT_EQ(machine->currentCommandAddress(), 2);
+
+     CommandStore::enter2->execute(machine, 999, 0, 2);
+     CommandStore::compare2->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
+
+     CommandStore::enter2->execute(machine, 1000, 0, 2);
+     CommandStore::compare2->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::equal);
+
+     machine->memory->setAt(0, std::make_shared<Word>(4034)); // 64 * 63 + 2
+     CommandStore::enter2->execute(machine, 5, 0, 2);
+     CommandStore::compare2->execute(machine, 0, 0, Command::fieldForIndexes(4, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
+     CommandStore::compare2->execute(machine, 0, 0, Command::fieldForIndexes(5, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::greater);
+
+     machine->memory->setAt(0, std::make_shared<Word>(0));
+     CommandStore::enter2->execute(machine, -63, 0, 0);
+     CommandStore::compare2->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
+}
+
+TEST_F(MachineTest, Compare3) {
+     machine->memory->setAt(0, std::make_shared<Word>(1000));
+     CommandStore::enter3->execute(machine, 1001, 0, 2);
+     CommandStore::lookupCommandByCode(59, Command::fieldForIndexes(0,5))->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::greater);
+     EXPECT_EQ(machine->totalCycles(), 3);
+     EXPECT_EQ(machine->currentCommandAddress(), 2);
+
+     CommandStore::enter3->execute(machine, 999, 0, 2);
+     CommandStore::compare3->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
+
+     CommandStore::enter3->execute(machine, 1000, 0, 2);
+     CommandStore::compare3->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::equal);
+
+     machine->memory->setAt(0, std::make_shared<Word>(4034)); // 64 * 63 + 2
+     CommandStore::enter3->execute(machine, 5, 0, 2);
+     CommandStore::compare3->execute(machine, 0, 0, Command::fieldForIndexes(4, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
+     CommandStore::compare3->execute(machine, 0, 0, Command::fieldForIndexes(5, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::greater);
+
+     machine->memory->setAt(0, std::make_shared<Word>(0));
+     CommandStore::enter3->execute(machine, -63, 0, 0);
+     CommandStore::compare3->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
+}
+
+TEST_F(MachineTest, Compare4) {
+     machine->memory->setAt(0, std::make_shared<Word>(1000));
+     CommandStore::enter4->execute(machine, 1001, 0, 2);
+     CommandStore::lookupCommandByCode(60, Command::fieldForIndexes(0,5))->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::greater);
+     EXPECT_EQ(machine->totalCycles(), 3);
+     EXPECT_EQ(machine->currentCommandAddress(), 2);
+
+     CommandStore::enter4->execute(machine, 999, 0, 2);
+     CommandStore::compare4->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
+
+     CommandStore::enter4->execute(machine, 1000, 0, 2);
+     CommandStore::compare4->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::equal);
+
+     machine->memory->setAt(0, std::make_shared<Word>(4034)); // 64 * 63 + 2
+     CommandStore::enter4->execute(machine, 5, 0, 2);
+     CommandStore::compare4->execute(machine, 0, 0, Command::fieldForIndexes(4, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
+     CommandStore::compare4->execute(machine, 0, 0, Command::fieldForIndexes(5, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::greater);
+
+     machine->memory->setAt(0, std::make_shared<Word>(0));
+     CommandStore::enter4->execute(machine, -63, 0, 0);
+     CommandStore::compare4->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
+}
+
+TEST_F(MachineTest, Compare5) {
+     machine->memory->setAt(0, std::make_shared<Word>(1000));
+     CommandStore::enter5->execute(machine, 1001, 0, 2);
+     CommandStore::lookupCommandByCode(61, Command::fieldForIndexes(0,5))->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::greater);
+     EXPECT_EQ(machine->totalCycles(), 3);
+     EXPECT_EQ(machine->currentCommandAddress(), 2);
+
+     CommandStore::enter5->execute(machine, 999, 0, 2);
+     CommandStore::compare5->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
+
+     CommandStore::enter5->execute(machine, 1000, 0, 2);
+     CommandStore::compare5->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::equal);
+
+     machine->memory->setAt(0, std::make_shared<Word>(4034)); // 64 * 63 + 2
+     CommandStore::enter5->execute(machine, 5, 0, 2);
+     CommandStore::compare5->execute(machine, 0, 0, Command::fieldForIndexes(4, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
+     CommandStore::compare5->execute(machine, 0, 0, Command::fieldForIndexes(5, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::greater);
+
+     machine->memory->setAt(0, std::make_shared<Word>(0));
+     CommandStore::enter5->execute(machine, -63, 0, 0);
+     CommandStore::compare5->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
+}
+
+TEST_F(MachineTest, Compare6) {
+     machine->memory->setAt(0, std::make_shared<Word>(1000));
+     CommandStore::enter6->execute(machine, 1001, 0, 2);
+     CommandStore::lookupCommandByCode(62, Command::fieldForIndexes(0,5))->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::greater);
+     EXPECT_EQ(machine->totalCycles(), 3);
+     EXPECT_EQ(machine->currentCommandAddress(), 2);
+
+     CommandStore::enter6->execute(machine, 999, 0, 2);
+     CommandStore::compare6->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
+
+     CommandStore::enter6->execute(machine, 1000, 0, 2);
+     CommandStore::compare6->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::equal);
+
+     machine->memory->setAt(0, std::make_shared<Word>(4034)); // 64 * 63 + 2
+     CommandStore::enter6->execute(machine, 5, 0, 2);
+     CommandStore::compare6->execute(machine, 0, 0, Command::fieldForIndexes(4, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
+     CommandStore::compare6->execute(machine, 0, 0, Command::fieldForIndexes(5, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::greater);
+
+     machine->memory->setAt(0, std::make_shared<Word>(0));
+     CommandStore::enter6->execute(machine, -63, 0, 0);
+     CommandStore::compare6->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
+}
+
+TEST_F(MachineTest, CompareX) {
+     machine->memory->setAt(0, std::make_shared<Word>(1000));
+     CommandStore::enterX->execute(machine, 1001, 0, 2);
+     CommandStore::lookupCommandByCode(63, Command::fieldForIndexes(0,5))->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::greater);
+     EXPECT_EQ(machine->totalCycles(), 3);
+     EXPECT_EQ(machine->currentCommandAddress(), 2);
+
+     CommandStore::enterX->execute(machine, 999, 0, 2);
+     CommandStore::compareX->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
+
+     CommandStore::enterX->execute(machine, 1000, 0, 2);
+     CommandStore::compareX->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::equal);
+
+     machine->memory->setAt(0, std::make_shared<Word>(4034)); // 64 * 63 + 2
+     CommandStore::enterX->execute(machine, 5, 0, 2);
+     CommandStore::compareX->execute(machine, 0, 0, Command::fieldForIndexes(4, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
+     CommandStore::compareX->execute(machine, 0, 0, Command::fieldForIndexes(5, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::greater);
+
+     machine->memory->setAt(0, std::make_shared<Word>(0));
+     CommandStore::enterX->execute(machine, -63, 0, 0);
+     CommandStore::compareX->execute(machine, 0, 0, Command::fieldForIndexes(0, 5));
+     EXPECT_EQ(machine->comparisonIndicator, Comparison::less);
 }

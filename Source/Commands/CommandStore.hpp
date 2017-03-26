@@ -58,65 +58,79 @@
 #include "JumpOnNoOverflow.hpp"
 
 #include "CompareA.hpp"
+#include "Compare1.hpp"
+#include "Compare2.hpp"
+#include "Compare3.hpp"
+#include "Compare4.hpp"
+#include "Compare5.hpp"
+#include "Compare6.hpp"
+#include "CompareX.hpp"
 
 namespace CommandStore {
-    extern std::shared_ptr<NoOperation> noOperation;
-    extern std::shared_ptr<Add> add;
+extern std::shared_ptr<NoOperation> noOperation;
+extern std::shared_ptr<Add> add;
 
-    extern std::shared_ptr<LoadA> loadA;
-    extern std::shared_ptr<Load1> load1;
-    extern std::shared_ptr<Load2> load2;
-    extern std::shared_ptr<Load3> load3;
-    extern std::shared_ptr<Load4> load4;
-    extern std::shared_ptr<Load5> load5;
-    extern std::shared_ptr<Load6> load6;
-    extern std::shared_ptr<LoadX> loadX;
+extern std::shared_ptr<LoadA> loadA;
+extern std::shared_ptr<Load1> load1;
+extern std::shared_ptr<Load2> load2;
+extern std::shared_ptr<Load3> load3;
+extern std::shared_ptr<Load4> load4;
+extern std::shared_ptr<Load5> load5;
+extern std::shared_ptr<Load6> load6;
+extern std::shared_ptr<LoadX> loadX;
 
-    extern std::shared_ptr<LoadANegative> loadANegative;
-    extern std::shared_ptr<Load1Negative> load1Negative;
-    extern std::shared_ptr<Load2Negative> load2Negative;
-    extern std::shared_ptr<Load3Negative> load3Negative;
-    extern std::shared_ptr<Load4Negative> load4Negative;
-    extern std::shared_ptr<Load5Negative> load5Negative;
-    extern std::shared_ptr<Load6Negative> load6Negative;
-    extern std::shared_ptr<LoadXNegative> loadXNegative;
+extern std::shared_ptr<LoadANegative> loadANegative;
+extern std::shared_ptr<Load1Negative> load1Negative;
+extern std::shared_ptr<Load2Negative> load2Negative;
+extern std::shared_ptr<Load3Negative> load3Negative;
+extern std::shared_ptr<Load4Negative> load4Negative;
+extern std::shared_ptr<Load5Negative> load5Negative;
+extern std::shared_ptr<Load6Negative> load6Negative;
+extern std::shared_ptr<LoadXNegative> loadXNegative;
 
-    extern std::shared_ptr<StoreA> storeA;
-    extern std::shared_ptr<Store1> store1;
-    extern std::shared_ptr<Store2> store2;
-    extern std::shared_ptr<Store3> store3;
-    extern std::shared_ptr<Store4> store4;
-    extern std::shared_ptr<Store5> store5;
-    extern std::shared_ptr<Store6> store6;
-    extern std::shared_ptr<StoreX> storeX;
+extern std::shared_ptr<StoreA> storeA;
+extern std::shared_ptr<Store1> store1;
+extern std::shared_ptr<Store2> store2;
+extern std::shared_ptr<Store3> store3;
+extern std::shared_ptr<Store4> store4;
+extern std::shared_ptr<Store5> store5;
+extern std::shared_ptr<Store6> store6;
+extern std::shared_ptr<StoreX> storeX;
 
-    extern std::shared_ptr<StoreJ> storeJ;
-    extern std::shared_ptr<StoreZero> storeZero;
-    extern std::shared_ptr<Jump> jump;
-    extern std::shared_ptr<JumpSaveJ> jumpSaveJ;
-    extern std::shared_ptr<JumpOnOverflow> jumpOnOverflow;
-    extern std::shared_ptr<JumpOnNoOverflow> jumpOnNoOverflow;
+extern std::shared_ptr<StoreJ> storeJ;
+extern std::shared_ptr<StoreZero> storeZero;
+extern std::shared_ptr<Jump> jump;
+extern std::shared_ptr<JumpSaveJ> jumpSaveJ;
+extern std::shared_ptr<JumpOnOverflow> jumpOnOverflow;
+extern std::shared_ptr<JumpOnNoOverflow> jumpOnNoOverflow;
 
-    extern std::shared_ptr<EnterA> enterA;
-    extern std::shared_ptr<IncrementA> incrementA;
-    extern std::shared_ptr<Enter1> enter1;
-    extern std::shared_ptr<Increment1> increment1;
-    extern std::shared_ptr<Enter2> enter2;
-    extern std::shared_ptr<Increment2> increment2;
-    extern std::shared_ptr<Enter3> enter3;
-    extern std::shared_ptr<Increment3> increment3;
-    extern std::shared_ptr<Enter4> enter4;
-    extern std::shared_ptr<Increment4> increment4;
-    extern std::shared_ptr<Enter5> enter5;
-    extern std::shared_ptr<Increment5> increment5;
-    extern std::shared_ptr<Enter6> enter6;
-    extern std::shared_ptr<Increment6> increment6;
-    extern std::shared_ptr<EnterX> enterX;
-    extern std::shared_ptr<IncrementX> incrementX;
+extern std::shared_ptr<EnterA> enterA;
+extern std::shared_ptr<IncrementA> incrementA;
+extern std::shared_ptr<Enter1> enter1;
+extern std::shared_ptr<Increment1> increment1;
+extern std::shared_ptr<Enter2> enter2;
+extern std::shared_ptr<Increment2> increment2;
+extern std::shared_ptr<Enter3> enter3;
+extern std::shared_ptr<Increment3> increment3;
+extern std::shared_ptr<Enter4> enter4;
+extern std::shared_ptr<Increment4> increment4;
+extern std::shared_ptr<Enter5> enter5;
+extern std::shared_ptr<Increment5> increment5;
+extern std::shared_ptr<Enter6> enter6;
+extern std::shared_ptr<Increment6> increment6;
+extern std::shared_ptr<EnterX> enterX;
+extern std::shared_ptr<IncrementX> incrementX;
 
-    extern std::shared_ptr<CompareA> compareA;
+extern std::shared_ptr<CompareA> compareA;
+extern std::shared_ptr<Compare1> compare1;
+extern std::shared_ptr<Compare2> compare2;
+extern std::shared_ptr<Compare3> compare3;
+extern std::shared_ptr<Compare4> compare4;
+extern std::shared_ptr<Compare5> compare5;
+extern std::shared_ptr<Compare6> compare6;
+extern std::shared_ptr<CompareX> compareX;
 
-    extern std::shared_ptr<Command> lookupCommandByCode(unsigned short code, unsigned short field);
+extern std::shared_ptr<Command> lookupCommandByCode(unsigned short code, unsigned short field);
 }
 
 #endif

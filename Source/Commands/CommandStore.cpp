@@ -55,229 +55,210 @@ std::shared_ptr<EnterX> CommandStore::enterX = std::make_shared<EnterX>();
 std::shared_ptr<IncrementX> CommandStore::incrementX = std::make_shared<IncrementX>();
 
 std::shared_ptr<CompareA> CommandStore::compareA = std::make_shared<CompareA>();
+std::shared_ptr<Compare1> CommandStore::compare1 = std::make_shared<Compare1>();
+std::shared_ptr<Compare2> CommandStore::compare2 = std::make_shared<Compare2>();
+std::shared_ptr<Compare3> CommandStore::compare3 = std::make_shared<Compare3>();
+std::shared_ptr<Compare4> CommandStore::compare4 = std::make_shared<Compare4>();
+std::shared_ptr<Compare5> CommandStore::compare5 = std::make_shared<Compare5>();
+std::shared_ptr<Compare6> CommandStore::compare6 = std::make_shared<Compare6>();
+std::shared_ptr<CompareX> CommandStore::compareX = std::make_shared<CompareX>();
 
 std::shared_ptr<Command> CommandStore::lookupCommandByCode(unsigned short code, unsigned short field) {
     switch (code) {
     case 0:
 	return noOperation;
-	break;
 
     case 1:
 	return add;
-	break;
 
     case 8:
 	return loadA;
-	break;
 
     case 9:
 	return load1;
-	break;
 
     case 10:
 	return load2;
-	break;
 
     case 11:
 	return load3;
-	break;
 
     case 12:
 	return load4;
-	break;
 
     case 13:
 	return load5;
-	break;
 
     case 14:
 	return load6;
-	break;
 
     case 15:
 	return loadX;
-	break;
-
 
     case 16:
 	return loadANegative;
-	break;
 
     case 17:
 	return load1Negative;
-	break;
 
     case 18:
 	return load2Negative;
-	break;
 
     case 19:
 	return load3Negative;
-	break;
 
     case 20:
 	return load4Negative;
-	break;
 
     case 21:
 	return load5Negative;
-	break;
 
     case 22:
 	return load6Negative;
-	break;
 
     case 23:
 	return loadXNegative;
-	break;
-
 
     case 24:
 	return storeA;
-	break;
 
     case 25:
 	return store1;
-	break;
 
     case 26:
 	return store2;
-	break;
 
     case 27:
 	return store3;
-	break;
 
     case 28:
 	return store4;
-	break;
 
     case 29:
 	return store5;
-	break;
 
     case 30:
 	return store6;
-	break;
 
     case 31:
 	return storeX;
-	break;
-
-
+	
     case 32:
 	return storeJ;
-	break;
 
     case 33:
 	return storeZero;
-	break;
 
     case 39:
 	switch (field) {
 	case 0:
 	    return jump;
-	    break;
+	    
 	case 1:
 	    return jumpSaveJ;
-	    break;
+	    
 	case 2:
 	    return jumpOnOverflow;
-	    break;
+	    
 	case 3:
 	    return jumpOnNoOverflow;
-	    break;
 	}
-	break;
-
-
+	
     case 48:
 	switch (field) {
 	case 0:
 	    return incrementA;
-	    break;
 	      
 	case 2:
 	    return enterA;
-	    break;
 	}
-	break;
 
     case 49:
 	switch (field) {
 	case 0:
 	    return increment1;
+	    
 	case 2:
 	    return enter1;
-	    break;
 	}
-	break;
 
     case 50:
 	switch (field) {
 	case 0:
 	    return increment2;
-	    break;
+	    
 	case 2:
 	    return enter2;
-	    break;
 	}
-	break;
 
     case 51:
 	switch (field) {
 	case 0:
 	    return increment3;
-	    break;
+	    
 	case 2:
 	    return enter3;
-	    break;
 	}
-	break;
 
     case 52:
 	switch (field) {
 	case 0:
 	    return increment4;
-	    break;
+	    
 	case 2:
 	    return enter4;
-	    break;
 	}
-	break;
 
     case 53:
 	switch (field) {
 	case 0:
 	    return increment5;
-	    break;
+	    
 	case 2:
 	    return enter5;
-	    break;
 	}
-	break;
 
     case 54:
 	switch (field) {
 	case 0:
 	    return increment6;
-	    break;
+	    
 	case 2:
 	    return enter6;
-	    break;
 	}
-	break;
 
     case 55:
 	switch (field) {
 	case 0:
 	    return incrementX;
-	    break;
+	    
 	case 2:
 	    return enterX;
-	    break;
 	}
-	break;
+
+    case 56:
+	return compareA;
+
+    case 57:
+	return compare1;
+
+    case 58:
+	return compare2;
+
+    case 59:
+	return compare3;
+
+    case 60:
+	return compare4;
+
+    case 61:
+	return compare5;
+
+    case 62:
+	return compare6;
+
+    case 63:
+	return compareX;
     }
     return noOperation;
 }
