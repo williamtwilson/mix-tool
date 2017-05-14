@@ -484,7 +484,8 @@ TEST_F(MachineTest, StoreX) {
 
 
 TEST_F(MachineTest, StoreJ) {
-    machine->rJ->load(std::make_shared<Word>(negativeOneThroughFive));
+    Word negOneThroughFiveWord = Word(negativeOneThroughFive);
+    machine->rJ->load(negOneThroughFiveWord);
     CommandStore::lookupCommandByCode(32, 0)->execute(machine, 0001, 0, Command::fieldForIndexes(1, 3));
     EXPECT_EQ(machine->memory->at(0001)->description(), "+ 3 2 1 0 0");
     EXPECT_EQ(machine->totalCycles(), 2);

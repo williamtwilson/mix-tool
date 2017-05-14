@@ -25,7 +25,7 @@ public:
     long toLong();
 private:
     Sign s;
-    std::shared_ptr<std::array<Byte, 5>> fields;
+    std::array<Byte, 5> fields;
 };
 
 

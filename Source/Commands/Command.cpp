@@ -30,11 +30,11 @@ void Command::compare(std::shared_ptr<Machine> machine, std::shared_ptr<Register
 	rValue *= 64;
 	cellValue *= 64;
 
-	rValue += r->read()->at(i);
+	rValue += r->read().at(i);
 	cellValue += cell->at(i);
     }
 
-    if (setSign && r->read()->sign() == Sign::negative) {
+    if (setSign && r->read().sign() == Sign::negative) {
 	rValue = 0 - rValue;
     }
 
@@ -55,7 +55,7 @@ void Command::compare(std::shared_ptr<Machine> machine, std::shared_ptr<Register
 }
 
 void Command::enter(std::shared_ptr<Machine> machine, std::shared_ptr<Register> r, unsigned long address) {
-    std::shared_ptr<Word> w = std::make_shared<Word>(address);
+    Word w = Word(address);
     r->load(w);
     machine->incrementCycles(1);
     machine->incrementCommandPointer();
@@ -84,15 +84,15 @@ void Command::load(std::shared_ptr<Machine> machine, std::shared_ptr<Register> r
     if (address <= 4000) {
         std::shared_ptr<Word> m = machine->lookupMemoryCell(address);
 
-        std::shared_ptr<Word> tmp = std::make_shared<Word>();
+        Word tmp = Word();
 
         if (f == 0) {
-            tmp->setSign(m->sign());
+            tmp.setSign(m->sign());
             f = 1;
         }
 
         for (int i = 5; l >= f; i--, l--) {
-            tmp->setAt(i, m->at(l));
+            tmp.setAt(i, m->at(l));
         }
 
         r->load(tmp);
@@ -108,19 +108,19 @@ void Command::loadNegative(std::shared_ptr<Machine> machine, std::shared_ptr<Reg
     if (address <= 4000) {
         std::shared_ptr<Word> m = machine->lookupMemoryCell(address);
 
-        std::shared_ptr<Word> tmp = std::make_shared<Word>();
+        Word tmp = Word();
 
         if (f == 0) {
             if (m->sign() == Sign::positive) {
-                tmp->setSign(Sign::negative);
+                tmp.setSign(Sign::negative);
             } else {
-                tmp->setSign(Sign::positive);
+                tmp.setSign(Sign::positive);
             }
             f = 1;
         }
 
         for (int i = 5; l >= f; i--, l--) {
-            tmp->setAt(i, m->at(l));
+            tmp.setAt(i, m->at(l));
         }
 
         r->load(tmp);
@@ -139,15 +139,15 @@ void Command::store(std::shared_ptr<Machine> machine, std::shared_ptr<Register> 
 
     if (address <= 4000) {
         std::shared_ptr<Word> m = machine->lookupMemoryCell(address);
-        std::shared_ptr<Word> regWord = reg->read();
+        Word regWord = reg->read();
 
         if (f == 0) {
-            m->setSign(regWord->sign());
+            m->setSign(regWord.sign());
             f = 1;
         }
 
         for (int i = l; i >= f; i--) {
-            m->setAt(i, regWord->at(5 - (l - i)));
+            m->setAt(i, regWord.at(5 - (l - i)));
         }
         machine->incrementCycles(2);
     }

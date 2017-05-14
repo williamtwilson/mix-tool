@@ -9,9 +9,11 @@ void Increment5::executeAdjusted(std::shared_ptr<Machine> machine, unsigned long
 
     if (sum > fifthPower) {
         machine->overflowToggle = Overflow::on;
-        machine->rI5->load(std::make_shared<Word>(sum % fifthPower));
+	Word newR5Value = Word(sum % fifthPower);
+        machine->rI5->load(newR5Value);
     } else {
-        machine->rI5->load(std::make_shared<Word>(sum));
+	Word newR5Value = Word(sum);
+        machine->rI5->load(newR5Value);
     }
     machine->incrementCycles(1);
     machine->incrementCommandPointer();

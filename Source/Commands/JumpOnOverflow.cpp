@@ -6,7 +6,7 @@ void JumpOnOverflow::executeAdjusted(std::shared_ptr<Machine> machine, unsigned 
     if (machine->overflowToggle == Overflow::on) {
         machine->overflowToggle = Overflow::off;
 
-        std::shared_ptr<Word> nextCommand = std::make_shared<Word>(machine->currentCommandAddress() + 1);
+        Word nextCommand = Word(machine->currentCommandAddress() + 1);
 
         machine->rJ->load(nextCommand);
         machine->setCommandPointer(address);

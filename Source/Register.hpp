@@ -12,10 +12,10 @@ public:
     long contentsToLong();
 
     std::string description();
-    void load(std::shared_ptr<Word> w);
-    std::shared_ptr<Word> read();
+    void load(Word &w);
+    Word read();
 private:
-    std::shared_ptr<Word> word;
+    Word word;
 };
 
 #endif
