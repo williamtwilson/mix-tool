@@ -8,7 +8,7 @@ void JumpOnOverflow::executeAdjusted(std::shared_ptr<Machine> machine, unsigned 
 
         Word nextCommand = Word(machine->currentCommandAddress() + 1);
 
-        machine->rJ->load(nextCommand);
+        machine->rJ.load(nextCommand);
         machine->setCommandPointer(address);
     } else {
         machine->incrementCommandPointer();

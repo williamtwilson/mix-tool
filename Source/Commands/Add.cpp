@@ -21,17 +21,17 @@ void Add::executeAdjusted(std::shared_ptr<Machine> machine, unsigned long addres
             tmp.setAt(i, memoryCell->at(l));
         }
 
-        long sum = machine->rA->contentsToLong() + tmp.toLong();
+        long sum = machine->rA.contentsToLong() + tmp.toLong();
         unsigned long fifthPower = 64 * 64 * 64 * 64 * 64;
 
         if (sum > fifthPower) {
             machine->overflowToggle = Overflow::on;
 
 	    Word newRAValue = Word(sum % fifthPower);
-            machine->rA->load(newRAValue);
+            machine->rA.load(newRAValue);
         } else {
 	    Word newRAValue = Word(sum);
-            machine->rA->load(newRAValue);
+            machine->rA.load(newRAValue);
         }
         machine->incrementCycles(2);
     }

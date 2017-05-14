@@ -13,15 +13,15 @@ public:
     Overflow overflowToggle;
     Comparison comparisonIndicator;
 
-    std::shared_ptr<Register> rA;
-    std::shared_ptr<Register> rX;
-    std::shared_ptr<Register> rI1;
-    std::shared_ptr<Register> rI2;
-    std::shared_ptr<Register> rI3;
-    std::shared_ptr<Register> rI4;
-    std::shared_ptr<Register> rI5;
-    std::shared_ptr<Register> rI6;
-    std::shared_ptr<Register> rJ;
+    Register rA;
+    Register rX;
+    Register rI1;
+    Register rI2;
+    Register rI3;
+    Register rI4;
+    Register rI5;
+    Register rI6;
+    Register rJ;
 
     std::shared_ptr<Memory> memory;
 
@@ -32,7 +32,7 @@ public:
     void incrementCommandPointer();
     void incrementCycles(unsigned long cycles);
 
-    std::shared_ptr<Register> lookupRegister(unsigned short);
+    Register lookupRegister(unsigned short);
 
     std::shared_ptr<Word> lookupMemoryCell(unsigned long);
 
