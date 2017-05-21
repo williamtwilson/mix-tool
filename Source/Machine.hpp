@@ -23,7 +23,7 @@ public:
     Register rI6;
     Register rJ;
 
-    std::shared_ptr<Memory> memory;
+    Memory memory;
 
     Machine();
 

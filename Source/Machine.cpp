@@ -12,7 +12,7 @@ Machine::Machine():
     rI5(Register()),
     rI6(Register()),
     rJ(Register()),
-    memory(std::make_shared<Memory>()),
+    memory(Memory()),
     commandPointer(0),
     cyclesPassed(0){}
 
@@ -59,7 +59,7 @@ Register Machine::lookupRegister(unsigned short index) {
 }
 
 std::shared_ptr<Word> Machine::lookupMemoryCell(unsigned long index) {
-    return memory->at(index);
+    return memory.at(index);
 }
 
 void Machine::showCell(unsigned long index) {

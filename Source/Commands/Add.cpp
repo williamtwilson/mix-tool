@@ -8,7 +8,7 @@ void Add::executeAdjusted(std::shared_ptr<Machine> machine, unsigned long addres
     unsigned short l = secondFieldIndex(field);
 
     if (address <= 4000) {
-        std::shared_ptr<Word> memoryCell = machine->memory->at(address);
+        std::shared_ptr<Word> memoryCell = machine->memory.at(address);
 
         Word tmp = Word();
 
