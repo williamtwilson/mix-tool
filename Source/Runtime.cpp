@@ -1,10 +1,10 @@
 #include "Runtime.hpp"
 
-Runtime::Runtime(): machine(std::make_shared<Machine>()) {}
+Runtime::Runtime(): machine(Machine()) {}
 
 void Runtime::executeNextCommand() {
-    unsigned long address = machine->currentCommandAddress();
-    std::shared_ptr<Word> commandWord = machine->memory.at(address);
+    unsigned long address = machine.currentCommandAddress();
+    std::shared_ptr<Word> commandWord = machine.memory.at(address);
     executeWord(commandWord);
 }
 

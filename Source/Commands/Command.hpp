@@ -12,21 +12,21 @@ public:
 
     Command(std::string, unsigned short);
 
-    void execute(std::shared_ptr<Machine> machine, unsigned long address, unsigned short index, unsigned short field);
+    void execute(Machine &machine, unsigned long address, unsigned short index, unsigned short field);
     static unsigned short fieldForIndexes(unsigned short first, unsigned short last);
 
 protected:
-    void compare(std::shared_ptr<Machine> machine, Register &r, unsigned long address, unsigned short field);
-    void enter(std::shared_ptr<Machine> machine, Register &r, unsigned long address);
-    virtual void executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field);
+    void compare(Machine &machine, Register &r, unsigned long address, unsigned short field);
+    void enter(Machine &machine, Register &r, unsigned long address);
+    virtual void executeAdjusted(Machine &machine, unsigned long address, unsigned short field);
     static unsigned short firstFieldIndex(unsigned short field);
-    void load(std::shared_ptr<Machine> machine, Register &r, unsigned long address, unsigned short field);
-    void loadNegative(std::shared_ptr<Machine> machine, Register &r, unsigned long address, unsigned short field);
+    void load(Machine &machine, Register &r, unsigned long address, unsigned short field);
+    void loadNegative(Machine &machine, Register &r, unsigned long address, unsigned short field);
     static unsigned short secondFieldIndex(unsigned short field);
-    void store(std::shared_ptr<Machine> machine, Register &reg, unsigned long address, unsigned short field);
+    void store(Machine &machine, Register &reg, unsigned long address, unsigned short field);
 
 private:
-    static unsigned long adjustedAddress(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field);
+    static unsigned long adjustedAddress(Machine &machine, unsigned long address, unsigned short field);
 };
 
 #endif

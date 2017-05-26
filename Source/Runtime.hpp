@@ -5,7 +5,7 @@
 
 class Runtime {
 public:
-    std::shared_ptr<Machine> machine;
+    Machine machine;
 
     Runtime();
 

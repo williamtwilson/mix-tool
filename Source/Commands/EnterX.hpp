@@ -8,7 +8,7 @@ public:
     EnterX();
 
 protected:
-    void executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field) override;
+    void executeAdjusted(Machine &machine, unsigned long address, unsigned short field) override;
 };
 
 #endif

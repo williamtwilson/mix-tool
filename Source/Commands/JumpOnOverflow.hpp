@@ -8,7 +8,7 @@ public:
     JumpOnOverflow();
 
 protected:
-    void executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field);
+    void executeAdjusted(Machine &machine, unsigned long address, unsigned short field);
 };
 
 #endif

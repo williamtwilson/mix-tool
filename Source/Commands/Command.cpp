@@ -2,17 +2,17 @@
 
 Command::Command(std::string n, unsigned short c): code(c), name(std::make_shared<std::string>(n)) {}
 
-unsigned long Command::adjustedAddress(std::shared_ptr<Machine> machine, unsigned long address, unsigned short index) {
+unsigned long Command::adjustedAddress(Machine &machine, unsigned long address, unsigned short index) {
     if (index > 0 && index < 7) {
-        Register rI = machine->lookupRegister(index);
+        Register rI = machine.lookupRegister(index);
         return rI.contentsToLong() + address;
     }
 
     return address;
 }
 
-void Command::compare(std::shared_ptr<Machine> machine, Register &r, unsigned long address, unsigned short field) {
-    std::shared_ptr<Word> cell = machine->lookupMemoryCell(address);
+void Command::compare(Machine &machine, Register &r, unsigned long address, unsigned short field) {
+    std::shared_ptr<Word> cell = machine.lookupMemoryCell(address);
 
     unsigned short f = firstFieldIndex(field);
     unsigned short l = secondFieldIndex(field);
@@ -43,27 +43,27 @@ void Command::compare(std::shared_ptr<Machine> machine, Register &r, unsigned lo
     }
 
     if (rValue > cellValue) {
-	machine->comparisonIndicator = Comparison::greater;
+	machine.comparisonIndicator = Comparison::greater;
     } else if (rValue < cellValue) {
-	machine->comparisonIndicator = Comparison::less;
+	machine.comparisonIndicator = Comparison::less;
     } else {
-	machine->comparisonIndicator = Comparison::equal;
+	machine.comparisonIndicator = Comparison::equal;
     }
 
-    machine->incrementCycles(2);
-    machine->incrementCommandPointer();
+    machine.incrementCycles(2);
+    machine.incrementCommandPointer();
 }
 
-void Command::enter(std::shared_ptr<Machine> machine, Register &r, unsigned long address) {
+void Command::enter(Machine &machine, Register &r, unsigned long address) {
     Word w = Word(address);
     r.load(w);
-    machine->incrementCycles(1);
-    machine->incrementCommandPointer();
+    machine.incrementCycles(1);
+    machine.incrementCommandPointer();
 }
 
-void Command::executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field) {}
+void Command::executeAdjusted(Machine &machine, unsigned long address, unsigned short field) {}
 
-void Command::execute(std::shared_ptr<Machine> machine, unsigned long address, unsigned short index, unsigned short field) {
+void Command::execute(Machine &machine, unsigned long address, unsigned short index, unsigned short field) {
     unsigned long adjustedIndex = adjustedAddress(machine, address, index);
 
     executeAdjusted(machine, adjustedIndex, field);
@@ -77,12 +77,12 @@ unsigned short Command::firstFieldIndex(unsigned short field) {
     return field / 8;
 }
 
-void Command::load(std::shared_ptr<Machine> machine, Register &r, unsigned long address, unsigned short field) {
+void Command::load(Machine &machine, Register &r, unsigned long address, unsigned short field) {
     unsigned short f = firstFieldIndex(field);
     unsigned short l = secondFieldIndex(field);
 
     if (address <= 4000) {
-        std::shared_ptr<Word> m = machine->lookupMemoryCell(address);
+        std::shared_ptr<Word> m = machine.lookupMemoryCell(address);
 
         Word tmp = Word();
 
@@ -96,17 +96,17 @@ void Command::load(std::shared_ptr<Machine> machine, Register &r, unsigned long 
         }
 
         r.load(tmp);
-        machine->incrementCycles(2);
+        machine.incrementCycles(2);
     }
-    machine->incrementCommandPointer();
+    machine.incrementCommandPointer();
 }
 
-void Command::loadNegative(std::shared_ptr<Machine> machine, Register &r, unsigned long address, unsigned short field) {
+void Command::loadNegative(Machine &machine, Register &r, unsigned long address, unsigned short field) {
     unsigned short f = firstFieldIndex(field);
     unsigned short l = secondFieldIndex(field);
 
     if (address <= 4000) {
-        std::shared_ptr<Word> m = machine->lookupMemoryCell(address);
+        std::shared_ptr<Word> m = machine.lookupMemoryCell(address);
 
         Word tmp = Word();
 
@@ -124,21 +124,21 @@ void Command::loadNegative(std::shared_ptr<Machine> machine, Register &r, unsign
         }
 
         r.load(tmp);
-        machine->incrementCycles(2);
+        machine.incrementCycles(2);
     }
-    machine->incrementCommandPointer();
+    machine.incrementCommandPointer();
 }
 
 unsigned short Command::secondFieldIndex(unsigned short field) {
     return field % 8;
 }
 
-void Command::store(std::shared_ptr<Machine> machine, Register &reg, unsigned long address, unsigned short field) {
+void Command::store(Machine &machine, Register &reg, unsigned long address, unsigned short field) {
     unsigned short f = firstFieldIndex(field);
     unsigned short l = secondFieldIndex(field);
 
     if (address <= 4000) {
-        std::shared_ptr<Word> m = machine->lookupMemoryCell(address);
+        std::shared_ptr<Word> m = machine.lookupMemoryCell(address);
         Word regWord = reg.read();
 
         if (f == 0) {
@@ -149,8 +149,8 @@ void Command::store(std::shared_ptr<Machine> machine, Register &reg, unsigned lo
         for (int i = l; i >= f; i--) {
             m->setAt(i, regWord.at(5 - (l - i)));
         }
-        machine->incrementCycles(2);
+        machine.incrementCycles(2);
     }
-    machine->incrementCommandPointer();
+    machine.incrementCommandPointer();
 }
 

@@ -3,12 +3,12 @@
 
 Add::Add(): Command("ADD", 1) {}
 
-void Add::executeAdjusted(std::shared_ptr<Machine> machine, unsigned long address, unsigned short field) {
+void Add::executeAdjusted(Machine &machine, unsigned long address, unsigned short field) {
     unsigned short f = firstFieldIndex(field);
     unsigned short l = secondFieldIndex(field);
 
     if (address <= 4000) {
-        std::shared_ptr<Word> memoryCell = machine->memory.at(address);
+        std::shared_ptr<Word> memoryCell = machine.memory.at(address);
 
         Word tmp = Word();
 
@@ -21,20 +21,20 @@ void Add::executeAdjusted(std::shared_ptr<Machine> machine, unsigned long addres
             tmp.setAt(i, memoryCell->at(l));
         }
 
-        long sum = machine->rA.contentsToLong() + tmp.toLong();
+        long sum = machine.rA.contentsToLong() + tmp.toLong();
         unsigned long fifthPower = 64 * 64 * 64 * 64 * 64;
 
         if (sum > fifthPower) {
-            machine->overflowToggle = Overflow::on;
+            machine.overflowToggle = Overflow::on;
 
 	    Word newRAValue = Word(sum % fifthPower);
-            machine->rA.load(newRAValue);
+            machine.rA.load(newRAValue);
         } else {
 	    Word newRAValue = Word(sum);
-            machine->rA.load(newRAValue);
+            machine.rA.load(newRAValue);
         }
-        machine->incrementCycles(2);
+        machine.incrementCycles(2);
     }
-    machine->incrementCommandPointer();
+    machine.incrementCommandPointer();
 }
 
