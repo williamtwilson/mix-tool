@@ -32,7 +32,7 @@ Register Machine::lookupRegister(unsigned short index) {
     switch (index) {
     case 1:
 	return rI1;
-	
+
     case 2:
 	return rI2;
 
@@ -47,9 +47,61 @@ Register Machine::lookupRegister(unsigned short index) {
 
     case 6:
 	return rI6;
+
+    case 7:
+	return rA;
+
+    case 8:
+	return rX;
+
+    case 9:
+	return rJ;
     }
 
-    return Register();
+    Register reg = Register();
+    return reg;
+}
+
+void  Machine::performOperationOnRegister(unsigned short lookup, std::function<void (Register &)> operation) {
+    switch (lookup) {
+    case 1:
+	operation(rI1);
+	break;
+	
+    case 2:
+	operation(rI2);
+	break;
+
+    case 3:
+	operation(rI3);
+	break;
+
+    case 4:
+	operation(rI4);
+	break;
+
+    case 5:
+	operation(rI5);
+	break;
+
+    case 6:
+	operation(rI6);
+	break;
+
+    case 7:
+	operation(rA);
+	break;
+
+    case 8:
+	operation(rX);
+	break;
+
+    case 9:
+	operation(rJ);
+	break;
+    }
+
+    return;
 }
 
 std::shared_ptr<Word> Machine::lookupMemoryCell(unsigned long index) {

@@ -3,12 +3,8 @@ target_link_libraries(Command Machine)
 
 set(COMMANDS 
     NoOperation Add
-    LoadA Load1 Load2 Load3 Load4 Load5 Load6 LoadX
-    LoadANegative Load1Negative Load2Negative Load3Negative Load4Negative Load5Negative Load6Negative LoadXNegative
-    StoreA Store1 Store2 Store3 Store4 Store5 Store6 StoreX
-    StoreJ StoreZero Jump JumpSaveJ JumpOnOverflow JumpOnNoOverflow
-    EnterA IncrementA Enter1 Increment1 Enter2 Increment2 Enter3 Increment3 Enter4 Increment4 Enter5 Increment5 Enter6 Increment6 EnterX IncrementX
-    CompareA Compare1 Compare2 Compare3 Compare4 Compare5 Compare6 CompareX)
+    StoreJ StoreZero Jump JumpSaveJ JumpOnOverflow JumpOnNoOverflow)
+
 
 foreach(LIB ${COMMANDS})
     add_library(${LIB} ${LIB}.cpp)

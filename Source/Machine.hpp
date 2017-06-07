@@ -4,6 +4,7 @@
 #include "Comparison.hpp"
 #include <iostream>
 #include <memory>
+#include <functional>
 #include "Memory.hpp"
 #include "Overflow.hpp"
 #include "Register.hpp"
@@ -32,7 +33,8 @@ public:
     void incrementCommandPointer();
     void incrementCycles(unsigned long cycles);
 
-    Register lookupRegister(unsigned short);
+    Register lookupRegister(unsigned short index);
+    void performOperationOnRegister(unsigned short lookup, std::function<void (Register &)> operation);
 
     std::shared_ptr<Word> lookupMemoryCell(unsigned long);
 
