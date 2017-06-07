@@ -22,7 +22,7 @@ add_subdirectory(googletest)
 set(SOURCES 
     Runtime 
     NoOperation Add
-    StoreJ StoreZero Jump JumpSaveJ JumpOnOverflow JumpOnNoOverflow)
+    StoreZero Jump JumpSaveJ JumpOnOverflow JumpOnNoOverflow)
 
 
 add_executable(mix main.cpp)

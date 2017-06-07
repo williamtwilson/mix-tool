@@ -3,7 +3,7 @@ target_link_libraries(Command Machine)
 
 set(COMMANDS 
     NoOperation Add
-    StoreJ StoreZero Jump JumpSaveJ JumpOnOverflow JumpOnNoOverflow)
+    StoreZero Jump JumpSaveJ JumpOnOverflow JumpOnNoOverflow)
 
 
 foreach(LIB ${COMMANDS})

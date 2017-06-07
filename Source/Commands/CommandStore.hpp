@@ -10,7 +10,6 @@
 #include "Load.hpp"
 #include "LoadNegative.hpp"
 #include "Store.hpp"
-#include "StoreJ.hpp"
 #include "StoreZero.hpp"
 #include "Jump.hpp"
 #include "JumpSaveJ.hpp"
@@ -73,7 +72,8 @@ namespace CommandStore {
     extern std::string storeXName;
     extern std::shared_ptr<Store<25, 8> > storeX;
 
-    extern std::shared_ptr<StoreJ> storeJ;
+    extern std::string storeJName;
+    extern std::shared_ptr<Store<32, 9> > storeJ;
     extern std::shared_ptr<StoreZero> storeZero;
     extern std::shared_ptr<Jump> jump;
     extern std::shared_ptr<JumpSaveJ> jumpSaveJ;

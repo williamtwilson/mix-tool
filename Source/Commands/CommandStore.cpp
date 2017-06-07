@@ -54,7 +54,8 @@ auto CommandStore::store6 = std::make_shared<Store<25, 6> >(CommandStore::store6
 std::string CommandStore::storeXName = "STX";
 auto CommandStore::storeX = std::make_shared<Store<25, 8> >(CommandStore::storeXName);
 
-auto CommandStore::storeJ = std::make_shared<StoreJ>();
+std::string CommandStore::storeJName = "STJ";
+auto CommandStore::storeJ = std::make_shared<Store<32, 9> >(CommandStore::storeJName);
 auto CommandStore::storeZero = std::make_shared<StoreZero>();
 auto CommandStore::jump = std::make_shared<Jump>();
 auto CommandStore::jumpSaveJ = std::make_shared<JumpSaveJ>();
