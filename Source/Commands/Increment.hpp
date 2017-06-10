@@ -9,17 +9,17 @@ public:
     Increment(std::string &name);
 
 protected:
-    void executeAdjusted(Machine &machine, unsigned long address, unsigned short field) override;
+    void executeAdjusted(Machine &machine, unsigned long address, unsigned short) override;
 };
 
 template <unsigned short codeT, unsigned short registerLookup>
 Increment<codeT, registerLookup>::Increment(std::string &name): Command(name, codeT) {}
 
 template <unsigned short codeT, unsigned short registerLookup>
-void Increment<codeT, registerLookup>::executeAdjusted(Machine &machine, unsigned long address, unsigned short field) {
+void Increment<codeT, registerLookup>::executeAdjusted(Machine &machine, unsigned long address, unsigned short) {
     machine.performOperationOnRegister(registerLookup, [&] (Register &reg) {
 	    long sum = reg.contentsToLong() + address;
-	    unsigned long fifthPower = 64 * 64 * 64 * 64 * 64;
+	    long fifthPower = 64 * 64 * 64 * 64 * 64;
 
 	    if (sum > fifthPower) {
 		machine.overflowToggle = Overflow::on;

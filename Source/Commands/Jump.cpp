@@ -2,7 +2,7 @@
 
 Jump::Jump(): Command("JMP", 39) {}
 
-void Jump::executeAdjusted(Machine &machine, unsigned long address, unsigned short field) {
+void Jump::executeAdjusted(Machine &machine, unsigned long address, unsigned short) {
     Word nextCommand = Word(machine.currentCommandAddress() + 1);
 
     machine.rJ.load(nextCommand);

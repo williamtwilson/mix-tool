@@ -8,7 +8,7 @@ public:
     Jump();
 
 protected:
-    void executeAdjusted(Machine &machine, unsigned long address, unsigned short field);
+    void executeAdjusted(Machine &machine, unsigned long address, unsigned short);
 };
 
 #endif

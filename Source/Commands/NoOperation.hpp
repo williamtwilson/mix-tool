@@ -8,7 +8,7 @@ public:
     NoOperation();
 
 protected:
-    void executeAdjusted(Machine &machine, unsigned long address, unsigned short field) override;
+    void executeAdjusted(Machine &machine, unsigned long, unsigned short) override;
 };
 
 #endif

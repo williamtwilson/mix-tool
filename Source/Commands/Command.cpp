@@ -11,7 +11,7 @@ unsigned long Command::adjustedAddress(Machine &machine, unsigned long address, 
     return address;
 }
 
-void Command::executeAdjusted(Machine &machine, unsigned long address, unsigned short field) {}
+void Command::executeAdjusted(Machine &, unsigned long, unsigned short) {}
 
 void Command::execute(Machine &machine, unsigned long address, unsigned short index, unsigned short field) {
     unsigned long adjustedIndex = adjustedAddress(machine, address, index);

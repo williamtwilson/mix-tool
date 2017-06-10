@@ -133,7 +133,7 @@ void Machine::setCommandPointer(unsigned long address) {
 }
 
 void Machine::showCells(unsigned long start, unsigned long end) {
-    for (int i = start; i < end; i++) {
+    for (unsigned long i = start; i < end; i++) {
         showCell(i);
     }
 }

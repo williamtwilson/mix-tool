@@ -22,7 +22,7 @@ void Add::executeAdjusted(Machine &machine, unsigned long address, unsigned shor
         }
 
         long sum = machine.rA.contentsToLong() + tmp.toLong();
-        unsigned long fifthPower = 64 * 64 * 64 * 64 * 64;
+        long fifthPower = 64 * 64 * 64 * 64 * 64;
 
         if (sum > fifthPower) {
             machine.overflowToggle = Overflow::on;

@@ -17,7 +17,7 @@ public:
     static unsigned short fieldForIndexes(unsigned short first, unsigned short last);
 
 protected:
-    virtual void executeAdjusted(Machine &machine, unsigned long address, unsigned short field);
+    virtual void executeAdjusted(Machine &, unsigned long, unsigned short);
     static unsigned short firstFieldIndex(unsigned short field);
     static unsigned short secondFieldIndex(unsigned short field);
 };

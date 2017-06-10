@@ -2,7 +2,7 @@
 
 JumpOnNoOverflow::JumpOnNoOverflow(): Command("JOV", 39) {}
 
-void JumpOnNoOverflow::executeAdjusted(Machine &machine, unsigned long address, unsigned short field) {
+void JumpOnNoOverflow::executeAdjusted(Machine &machine, unsigned long address, unsigned short) {
     if (machine.overflowToggle == Overflow::on) {
         machine.overflowToggle = Overflow::off;
 

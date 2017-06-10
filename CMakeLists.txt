@@ -13,7 +13,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(${CMAKE_SOURCE_DIR})
 
-add_definitions(-Wall)
+add_definitions(-Wall -Wextra)
 
 add_subdirectory(Source)
 
